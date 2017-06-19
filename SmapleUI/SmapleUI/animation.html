@@ -1,0 +1,1859 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+     
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    
+<head>  
+
+            <link rel="canonical" href="http://blog.csdn.net/whjay520/article/details/53538266"/> 
+ <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+       
+    <title>史上最全－iOS开发中所用的动画 效果看这里就够了 - Loves_JuLy的博客
+        - 博客频道 - CSDN.NET</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="前言上次总结了多线程的用法,这次再复习下iOS动画的东西.这次依然先是以api为主,因为好多人还是api好多的东西还不会用.然后中间穿插些例子,例子和代码文章中都会有.因为篇幅比较长,先列一下大纲.动画的继承结构CAAnimation{     CAPropertyAnimation{            CABasicAnimation{" />
+   
+    <script src="http://static.blog.csdn.net/scripts/blog_static_head.min.js" type="text/javascript"></script>
+
+    
+        <!--new top-->
+                      <!--new top-->
+    
+      <!-- ad begin -->
+         
+    <!-- ad end-->
+
+    <link rel="Stylesheet" type="text/css" href="http://static.blog.csdn.net/skin/skin-yellow/css/style.css?v=1.1" />
+
+    
+
+    <link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="/whjay520/rss/list" />
+    <link rel="shortcut icon" href="http://c.csdnimg.cn/public/favicon.ico" />
+    <link type="text/css" rel="stylesheet" href="http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/default.css" />
+ 
+
+
+    <link href="http://c.csdnimg.cn/blog/csdn_public_blog_detail.min.css" type="text/css" rel="stylesheet" />
+     
+         <link rel="stylesheet" href="http://static.blog.csdn.net/css/csdn_blog_detail.min.css" />
+
+     <script src="http://c.csdnimg.cn/rabbit/tracking-ad/fuckadblock.js" type="text/javascript" charset="utf-8"></script>
+         <script src="http://c.csdnimg.cn/rabbit/tracking-ad/block.js?v=20170531.001" type="text/javascript" charset="utf-8"></script>
+
+
+</head>
+
+
+<body>
+       
+
+
+
+    <!-- 广告位开始 -->
+        
+    <!-- 广告位结束 -->
+
+    
+   
+      <!--new top-->
+    <script id="toolbar-tpl-scriptId" fixed="true" prod="blog" skin="black" src="http://c.csdnimg.cn/public/common/toolbar/js/html.js" type="text/javascript"></script>
+     <!--new top-->
+    <div id="container">
+        <div id="header">
+    <div class="header">
+        <div id="blog_title">
+            <h2>
+                <a href="http://blog.csdn.net/whjay520">Loves_JuLy的博客</a></h2>
+            <h3></h3>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+        
+     
+    </div>
+</div>
+<div id="navigator">
+    <div class="navigator_bg">
+    </div>
+    <div class="navigator">
+        <ul>           
+                <li id="btnContents"><a href="http://blog.csdn.net/whjay520?viewmode=contents"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_mulu'])">
+                    <img src="http://static.blog.csdn.net/images/ico_list.gif">目录视图</span></a></li>
+                <li id="btnView"><a href="http://blog.csdn.net/whjay520?viewmode=list"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_zhaiyao'])">
+                    <img src="http://static.blog.csdn.net/images/ico_summary.gif">摘要视图</span></a></li>
+                <li id="btnRss"><a href="http://blog.csdn.net/whjay520/rss/list"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])">
+                    <img src="http://static.blog.csdn.net/images/ico_rss.gif">订阅</span></a></li>                
+            
+
+            </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    var username = "whjay520";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/whjay520";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+</script>
+
+        <div id="body">
+            <div id="main">
+                <div class="main">
+                        <div class="ad_class">
+<div class="notice tracking-ad" data-mod='popu_3' > 
+
+
+<a href="http://blog.csdn.net/blogdevteam/article/details/71710010">
+<font color=blue><strong>【活动】2017 CSDN博客专栏评选</strong></font></a>
+
+&nbsp;&nbsp;&nbsp;&nbsp
+
+<a href=" http://blog.csdn.net/turingbooks/article/details/72416875">
+<font color=red><strong>【评论送书】5月书讯：流畅的Python </strong></font></a>
+&nbsp;&nbsp;&nbsp;&nbsp
+
+<a href="http://blog.csdn.net/blogdevteam/article/details/72829974">
+<font color=blue><strong>CSDN日报20170601 ——《程序猿职业生涯的迷惘与野望》
+</strong></font></a>
+
+&nbsp;&nbsp;&nbsp;&nbsp
+
+<a href=" http://powerai.csdn.net/finance">
+<font color=red><strong>IBM PowerAI人工智能马拉</strong></font></a>
+
+
+</div>                        </div>
+                        
+
+
+
+  
+
+
+
+
+
+
+<script   type="text/javascript" src="http://static.blog.csdn.net/scripts/category.js"></script>
+
+  <script type="text/ecmascript">
+      window.quickReplyflag = true;
+           
+            var isBole = false;
+            
+      
+      var fasrc="http://my.csdn.net/my/favorite/miniadd?t=%e5%8f%b2%e4%b8%8a%e6%9c%80%e5%85%a8%ef%bc%8diOS%e5%bc%80%e5%8f%91%e4%b8%ad%e6%89%80%e7%94%a8%e7%9a%84%e5%8a%a8%e7%94%bb+%e6%95%88%e6%9e%9c%e7%9c%8b%e8%bf%99%e9%87%8c%e5%b0%b1%e5%a4%9f%e4%ba%86&u=http://blog.csdn.net/whjay520/article/details/53538266"
+
+    </script>
+<div id="article_details" class="details">
+    <div class="article_title">   
+         <span class="ico ico_type_Repost"></span>
+
+
+    <h1>
+        <span class="link_title"><a href="/whjay520/article/details/53538266">
+        史上最全－iOS开发中所用的动画 效果看这里就够了            
+        </a></span>
+    </h1>
+</div>
+
+   
+
+        <div class="article_manage clearfix">
+        <div class="article_r">
+            <span class="link_postdate">2016-12-09 14:11</span>
+            <span class="link_view" title="阅读次数">1109人阅读</span>
+            <span class="link_comments" title="评论次数"> <a href="#comments" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])">评论</a>(0)</span>
+            <span class="link_collect tracking-ad" data-mod="popu_171"> <a href="javascript:void(0);" onclick="javascript:collectArticle('%e5%8f%b2%e4%b8%8a%e6%9c%80%e5%85%a8%ef%bc%8diOS%e5%bc%80%e5%8f%91%e4%b8%ad%e6%89%80%e7%94%a8%e7%9a%84%e5%8a%a8%e7%94%bb+%e6%95%88%e6%9e%9c%e7%9c%8b%e8%bf%99%e9%87%8c%e5%b0%b1%e5%a4%9f%e4%ba%86','53538266');return false;" title="收藏">收藏</a></span>
+             <span class="link_report"> <a href="#report" onclick="javascript:report(53538266,2);return false;" title="举报">举报</a></span>
+
+        </div>
+    </div>
+    <div class="embody"  style="display:none" id="embody">
+        <span class="embody_t">本文章已收录于：</span>
+        <div class="embody_c" id="lib" value="{&quot;err&quot;:0,&quot;msg&quot;:&quot;ok&quot;,&quot;data&quot;:[]}"></div>
+    </div>
+    <style type="text/css">        
+            .embody{
+                padding:10px 10px 10px;
+                margin:0 -20px;
+                border-bottom:solid 1px #ededed;                
+            }
+            .embody_b{
+                margin:0 ;
+                padding:10px 0;
+            }
+            .embody .embody_t,.embody .embody_c{
+                display: inline-block;
+                margin-right:10px;
+            }
+            .embody_t{
+                font-size: 12px;
+                color:#999;
+            }
+            .embody_c{
+                font-size: 12px;
+            }
+            .embody_c img,.embody_c em{
+                display: inline-block;
+                vertical-align: middle;               
+            }
+             .embody_c img{               
+                width:30px;
+                height:30px;
+            }
+            .embody_c em{
+                margin: 0 20px 0 10px;
+                color:#333;
+                font-style: normal;
+            }
+    </style>
+    <script  type="text/javascript">
+        $(function () {
+            try
+            {
+                var lib = eval("("+$("#lib").attr("value")+")");
+                var html = "";
+                if (lib.err == 0) {
+                    $.each(lib.data, function (i) {
+                        var obj = lib.data[i];
+                        //html += '<img src="' + obj.logo + '"/>' + obj.name + "&nbsp;&nbsp;";
+                        html += ' <a href="' + obj.url + '" target="_blank">';
+                        html += ' <img src="' + obj.logo + '">';
+                        html += ' <em><b>' + obj.name + '</b></em>';
+                        html += ' </a>';
+                    });
+                    if (html != "") {
+                        setTimeout(function () {
+                            $("#lib").html(html);                      
+                            $("#embody").show();
+                        }, 100);
+                    }
+                }      
+            } catch (err)
+            { }
+            
+        });
+    </script>
+      <div class="category clearfix">
+        <div class="category_l">
+           <img src="http://static.blog.csdn.net/images/category_icon.jpg">
+            <span>分类：</span>
+        </div>
+        <div class="category_r">
+                    <label  onclick="GetCategoryArticles('6095206','whjay520','top','53538266');">
+                        <span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">iOS相关<em>（46）</em></span>
+                      <img class="arrow-down" src="http://static.blog.csdn.net/images/arrow_triangle _down.jpg" style="display:inline;">
+                      <img class="arrow-up" src="http://static.blog.csdn.net/images/arrow_triangle_up.jpg" style="display:none;">
+                        <div class="subItem">
+                            <div class="subItem_t"><a  href="http://blog.csdn.net/whjay520/article/category/6095206"  target="_blank">作者同类文章</a><i class="J_close">X</i></div>
+                            <ul class="subItem_l" id="top_6095206">                            
+                            </ul>
+                        </div>
+                    </label>                    
+                    <label  onclick="GetCategoryArticles('6383991','whjay520','top','53538266');">
+                        <span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">swift<em>（29）</em></span>
+                      <img class="arrow-down" src="http://static.blog.csdn.net/images/arrow_triangle _down.jpg" style="display:inline;">
+                      <img class="arrow-up" src="http://static.blog.csdn.net/images/arrow_triangle_up.jpg" style="display:none;">
+                        <div class="subItem">
+                            <div class="subItem_t"><a  href="http://blog.csdn.net/whjay520/article/category/6383991"  target="_blank">作者同类文章</a><i class="J_close">X</i></div>
+                            <ul class="subItem_l" id="top_6383991">                            
+                            </ul>
+                        </div>
+                    </label>                    
+                    <label  onclick="GetCategoryArticles('6095208','whjay520','top','53538266');">
+                        <span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">前端开发<em>（11）</em></span>
+                      <img class="arrow-down" src="http://static.blog.csdn.net/images/arrow_triangle _down.jpg" style="display:inline;">
+                      <img class="arrow-up" src="http://static.blog.csdn.net/images/arrow_triangle_up.jpg" style="display:none;">
+                        <div class="subItem">
+                            <div class="subItem_t"><a  href="http://blog.csdn.net/whjay520/article/category/6095208"  target="_blank">作者同类文章</a><i class="J_close">X</i></div>
+                            <ul class="subItem_l" id="top_6095208">                            
+                            </ul>
+                        </div>
+                    </label>                    
+        </div>
+    </div>
+
+  
+
+  
+  
+     
+
+
+<div id="article_content" class="article_content tracking-ad" data-mod=popu_307  data-dsm = "post" >
+
+<h3>前言</h3>
+<p>上次总结了多线程的用法，这次再复习下的iOS动画的东西。这次依然先是以API为主，因为好多人还是API好多的东西还不会用。然后中间穿插些例子，例子和代码文章中都会有。因为篇幅比较长，先列一下大纲。</p>
+<h3>动画的继承结构</h3>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-built_in">CAAnimation</span>{
+     <span class="hljs-built_in">CAPropertyAnimation</span>{
+            <span class="hljs-built_in">CABasicAnimation</span>{
+                    <span class="hljs-built_in">CASpringAnimation</span>
+            }
+            <span class="hljs-built_in">CAKeyframeAnimation</span>
+     }
+     <span class="hljs-built_in">CATransition</span>   
+     <span class="hljs-built_in">CAAnimationGroup</span>
+}</code></pre>
+<h4>CAAnimation（动画根类，不可以直接使用）</h4>
+<p><br>
+CAAnimation-属性（复杂点的属性，下面会有详细解释）</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">//动画的代理回调,下面会有</span>
+<span class="hljs-keyword">@property</span>(nullable, <span class="hljs-keyword">strong</span>) <span class="hljs-keyword">id</span> delegate;
+<span class="hljs-comment">//动画执行完以后是否移除动画,默认YES</span>
+<span class="hljs-keyword">@property</span>(getter=isRemovedOnCompletion) <span class="hljs-built_in">BOOL</span> removedOnCompletion;
+<span class="hljs-comment">//动画的动作规则,包含以下&#20540;</span>
+<span class="hljs-comment">//kCAMediaTimingFunctionLinear 匀速</span>
+<span class="hljs-comment">//kCAMediaTimingFunctionEaseIn 慢进快出</span>
+<span class="hljs-comment">//kCAMediaTimingFunctionEaseOut 快进慢出</span>
+<span class="hljs-comment">//kCAMediaTimingFunctionEaseInEaseOut 慢进慢出 中间加速</span>
+<span class="hljs-comment">//kCAMediaTimingFunctionDefault 默认</span>
+<span class="hljs-keyword">@property</span>(nullable, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">CAMediaTimingFunction</span> *timingFunction;</code></pre>
+<p>以上属性的详解：</p>
+<blockquote>
+<ul>
+<li>委托：动画执行的代理，在动画开始前设定，不用显式的写在代码里，它包含两个方法：<br>
+<strong>动画开始回调</strong><br>
+<code>- (void)animationDidStart:(CAAnimation *)anim;</code><br>
+<strong>动画结束回调</strong><br>
+<code>- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag;</code></li><li>removedOnCompletion：动画完成后是否移除动画默认为YES此属性为YES时，在fillMode不可用，具体为什么不可用，可以自己结合两个属性分析一下，这里不再赘述。</li><li>timingFunction设置动画速度曲线，默认&#20540;上面已经给出下面说它的几个方法：<br>
+<strong>。这两个方法是一样的如果我们对系统自带的速度函数不满意，可以通过这两个函数创建一个自己喜欢的速度曲线函数，具体用法可以参考这篇文章<a target="_blank" target="_blank" href="https://yq.aliyun.com/articles/29568">CAMediaTimingFunction使用的</a></strong><br>
+<code>&#43; (instancetype)functionWithControlPoints:(float)c1x :(float)c1y :(float)c2x :(float)c2y;</code><br>
+<code>- (instancetype)initWithControlPoints:(float)c1x :(float)c1y :(float)c2x :(float)c2y;</code><br>
+<strong>电子杂志曲线的函数的缓冲点，具体用法可以参考这篇文章：<a target="_blank" target="_blank" href="http://blog.csdn.net/yangbingbinga/article/details/43489295">iOS-核心动画高级编程/ 10-缓冲</a></strong><br>
+<code>- (void)getControlPointAtIndex:(size_t)idx values:(float[2])ptr;</code></li></ul>
+</blockquote>
+<p>CAAnimation &lt;CAMediaTiming&gt;协议的属性</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">//开始时间.这个属性比较复杂,傻瓜用法为:CACurrentMediaTime() &#43; x,</span>
+<span class="hljs-comment">//其中x为延迟时间.如果设置 beginTime = CACurrentMediaTime() &#43; 1.0,产生的效果为延迟一秒执行动画,下面详解原理</span>
+<span class="hljs-keyword">@property</span> <span class="hljs-built_in">CFTimeInterval</span> beginTime;
+<span class="hljs-comment">//动画执行时间,此属性和speed有关系speed默认为1.0,如果speed设置为2.0,那么动画执行时间则为duration*(1.0/2.0).</span>
+<span class="hljs-keyword">@property</span> <span class="hljs-built_in">CFTimeInterval</span> duration;
+<span class="hljs-comment">//动画执行速度,它duration的关系参考上面解释</span>
+<span class="hljs-keyword">@property</span> <span class="hljs-keyword">float</span> speed;
+<span class="hljs-comment">//动画的时间延迟,这个属性比较复杂,下面详解</span>
+<span class="hljs-keyword">@property</span> <span class="hljs-built_in">CFTimeInterval</span> timeOffset;
+<span class="hljs-comment">//重复执行次数</span>
+<span class="hljs-keyword">@property</span> <span class="hljs-keyword">float</span> repeatCount;
+<span class="hljs-comment">//重复执行时间,此属性优先级大于repeatCount.也就是说如果repeatDuration设置为1秒重复10次,那么它会在1秒内执行完动画.</span>
+<span class="hljs-keyword">@property</span> <span class="hljs-built_in">CFTimeInterval</span> repeatDuration;
+<span class="hljs-comment">//是否自动翻转动画,默认NO.如果设置YES,那么整个动画的执行效果为A-&gt;B-&gt;A.</span>
+<span class="hljs-keyword">@property</span> <span class="hljs-built_in">BOOL</span> autoreverses;
+<span class="hljs-comment">//动画的填充方式,默认为: kCAFillModeRemoved,包含以下&#20540;</span>
+<span class="hljs-comment">//kCAFillModeForwards//动画结束后回到准备状态</span>
+<span class="hljs-comment">//kCAFillModeBackwards//动画结束后保持最后状态</span>
+<span class="hljs-comment">//kCAFillModeBoth//动画结束后回到准备状态,并保持最后状态</span>
+<span class="hljs-comment">//kCAFillModeRemoved//执行完成移除动画</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">copy</span>) <span class="hljs-built_in">NSString</span> *fillMode;</code></pre>
+<p>以上属性的详解：</p>
+<blockquote>
+<ul>
+<li>BEGINTIME：刚才上面简单解释了下这个属性的用法：<code>CACurrentMediaTime()&#43; x</code>。会使动画延迟执行点¯x秒不知道到这里有没有人想过如果<code>-x</code>？会出现怎么样效果假设我们有执行一个3秒的动画，设置然后<code>beginTime = CACurrentMediaTime()- 1.5</code>那么执行动画你会发现动画只会执行后半段，就是也。只执行后面的<code>3-1.5s</code>的动画。为什么会这样？其实动画都有一个时间表（时间线）的概念。动画开始执行都是基于这个时间线的绝对时间，这个时间和它的父类有关（系统的属性注释可以看到）。默认的CALayer的的BEGINTIME为零，如果这个&#20540;为零的话，系统会把它设置为CACurrentMediaTime（），那么这个时间就是正常执行动画的时间：立即执行所以如果设置你<code>beginTime=CACurrentMediaTime()&#43;x;</code>它会把它的执行时间线推迟<code>x</code>秒，就是也。晚执行<code>x</code>秒，如果你<code>beginTime=CACurrentMediaTime()-x;</code>那它开始的时候会从你动画对应的绝对时间开始执行。</li><li>timeOffset：时间偏移量，默认为0;既然它是时间偏移量，那么它即和动画时间相关这么解释：假设我们设置一个动画时间为5秒，动画执行的过程为<code>1-&gt;2-&gt;3-&gt;4-&gt;5</code>，这时候如果你设置<code>timeOffset = 2s</code>它那么的执行过程就会变成<code>3-&gt;4-&gt;5-&gt;1-&gt;2</code>如果你设置<code>timeOffset = 4s</code>那么它的执行过程就会变成<code>5-&gt;1-&gt;2-&gt;3-&gt;4</code>，这么说应该很明白了吧？</li></ul>
+</blockquote>
+<h4>CAPropertyAnimation属性动画，抽象类，不能直接使用</h4>
+<p>CAPropertyAnimation的属性</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">//需要动画的属性&#20540;</span>
+<span class="hljs-keyword">@property</span>(nullable, <span class="hljs-keyword">copy</span>) <span class="hljs-built_in">NSString</span> *keyPath;
+<span class="hljs-comment">//属性动画是否以当前动画效果为基础,默认为NO</span>
+<span class="hljs-keyword">@property</span>(getter=isAdditive) <span class="hljs-built_in">BOOL</span> additive;
+<span class="hljs-comment">//指定动画是否为累加效果,默认为NO</span>
+<span class="hljs-keyword">@property</span>(getter=isCumulative) <span class="hljs-built_in">BOOL</span> cumulative;
+<span class="hljs-comment">//此属性相当于CALayer中的transform属性,下面会详解</span>
+<span class="hljs-keyword">@property</span>(nullable, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">CAValueFunction</span> *valueFunction;</code></pre>
+<p>以上属性的详解：</p>
+<blockquote>
+<p>CAPropertyAnimation是属性动画顾名思义也就是针对属性才可以做的动画那它可以对谁的属性可以做动画是的CALayer的属性，比如：？界限，位置等那么问题来了，我们改变的CALayer的位置可以。设置直接<code>[CAPropertyAnimation animationWithKeyPath:@&quot;position&quot;]</code>如果我们设置它的变换（CATransform3D）呢？CATransform3D是一个矩阵，如果我们想为它做动画怎么办？下面这个属性就是用来解决这个问题的。</p>
+<ul>
+<li>valueFunction：我们来看它可以设置的&#20540;：<br>
+<code>kCAValueFunctionRotateX</code><br>
+<code>kCAValueFunctionRotateY</code><br>
+<code>kCAValueFunctionRotateZ</code><br>
+<code>kCAValueFunctionScale</code><br>
+<code>kCAValueFunctionScaleX</code><br>
+<code>kCAValueFunctionScaleY</code><br>
+<code>kCAValueFunctionScaleZ</code><br>
+<code>kCAValueFunctionTranslate</code><br>
+<code>kCAValueFunctionTranslateX</code><br>
+<code>kCAValueFunctionTranslateY</code><br>
+<code>kCAValueFunctionTranslateZ</code><br>
+说到这里大家应该都知道该怎么用了吧〜。</li></ul>
+</blockquote>
+<p>CAPropertyAnimation的方法</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">//通过key创建一个CAPropertyAnimation对象</span>
+&#43; (instancetype)animationWithKeyPath:(nullable <span class="hljs-built_in">NSString</span> *)path;</code></pre>
+<p>下面我们来看一下可以设置属性动画的属性归总：</p>
+<pre class="hljs mathematica"><code class="mathematica">CATransform3D<span class="hljs-list">{
+    rotation旋转
+    transform.rotation.x
+    transform.rotation.y
+    transform.rotation.z
+
+    scale缩放
+    transform.scale.x
+    transform.scale.y
+    transform.scale.z
+
+    translation平移
+    transform.translation.x
+    transform.translation.y
+    transform.translation.z
+}</span>
+
+CGPoint<span class="hljs-list">{
+    position
+    position.x
+    position.y
+}</span>
+
+CGRect<span class="hljs-list">{
+    bounds
+    bounds.size
+    bounds.size.width
+    bounds.size.height
+
+    bounds.origin
+    bounds.origin.x
+    bounds.origin.y
+}</span>
+
+property<span class="hljs-list">{
+    opacity
+    backgroundColor
+    cornerRadius
+    borderWidth
+    contents
+
+    Shadow{
+        shadowColor
+        shadowOffset
+        shadowOpacity
+        shadowRadius
+    }</span>
+}</code></pre>
+<blockquote>
+<p><strong>总结：CAAnimation是基类，CAPropertyAnimation是抽象类，两者都不可以直接使用，那我们只有使用它的子类了。</strong></p>
+</blockquote>
+<h4>CABasicAnimation基本动画</h4>
+<p>CABasicAnimation的属性</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">//开始&#20540;</span>
+<span class="hljs-keyword">@property</span>(nullable, <span class="hljs-keyword">strong</span>) <span class="hljs-keyword">id</span> fromValue;
+<span class="hljs-comment">//结束&#20540;</span>
+<span class="hljs-keyword">@property</span>(nullable, <span class="hljs-keyword">strong</span>) <span class="hljs-keyword">id</span> toValue;
+<span class="hljs-comment">//结束&#20540;</span>
+<span class="hljs-keyword">@property</span>(nullable, <span class="hljs-keyword">strong</span>) <span class="hljs-keyword">id</span> byValue;</code></pre>
+<p>这三个属性之间的规则</p>
+<blockquote>
+<ul>
+<li><code>fromValue</code>状语从句：<code>toValue</code>不为空，的动画会效果从<code>fromValue</code>的&#20540;变化到<code>toValue</code>。</li><li><code>fromValue</code>状语从句：<code>byValue</code>都不为空，的动画效果将会从<code>fromValue</code>变化到<code>fromValue&#43;byValue</code></li><li><code>toValue</code>状语从句：<code>byValue</code>都不为空，的动画效果将会从<code>toValue-byValue</code>变化到<code>toValue</code></li><li>只有<code>fromValue</code>的&#20540;不为空，的动画效果将会从<code>fromValue</code>的&#20540;变化到当前的状态。</li><li>只有<code>toValue</code>的&#20540;不为空，的动画效果将会从当前状态的&#20540;变化到<code>toValue</code>的&#20540;。<br>
+只有<code>byValue</code>的&#20540;不为空，动画的效果将会从当前的&#20540;变化到（当前状态的&#20540;&#43; <code>byValue</code>）的&#20540;。</li></ul>
+</blockquote>
+<p>CABasicAnimation看起来不太复杂，但实际只用这个就足以可以做很多种动画了，下面简单用一下，先看效果：</p>
+<div class="image-package imagebubble"><img src="http://upload-images.jianshu.io/upload_images/3270116-7dcdcc25f5103e66.gif?imageMogr2/auto-orient/strip" class="imagebubble-image" alt=""><br>
+<div class="image-caption">CABasicAnimation.gif</div>
+</div>
+<p>然后再看下实现代码：</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-preprocessor">#import <span class="hljs-title">&quot;ViewController.h&quot;</span></span>
+<span class="hljs-preprocessor">#import <span class="hljs-title">&quot;TFEasyCoder.h&quot;</span></span>
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">ViewController</span> ()</span>
+
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>,<span class="hljs-keyword">strong</span>)<span class="hljs-built_in">UIView</span> *demoView;
+
+
+<span class="hljs-keyword">@end</span>
+
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">ViewController</span></span>
+
+- (<span class="hljs-keyword">void</span>)viewDidLoad {
+    [<span class="hljs-keyword">super</span> viewDidLoad];
+
+    kdeclare_weakself;
+    <span class="hljs-built_in">NSArray</span> *titles = @[<span class="hljs-string">@&quot;淡入淡出&quot;</span>,<span class="hljs-string">@&quot;缩放&quot;</span>,<span class="hljs-string">@&quot;旋转&quot;</span>,<span class="hljs-string">@&quot;平移&quot;</span>];
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; titles<span class="hljs-variable">.count</span>; i&#43;&#43;) {
+
+        [<span class="hljs-built_in">UIButton</span> easyCoder:^(<span class="hljs-built_in">UIButton</span> *ins) {
+            [weakSelf<span class="hljs-variable">.view</span> addSubview:ins];
+            ins<span class="hljs-variable">.backgroundColor</span> = [<span class="hljs-built_in">UIColor</span> brownColor];
+            ins<span class="hljs-variable">.tag</span> = i;
+            ins<span class="hljs-variable">.frame</span> = <span class="hljs-built_in">CGRectMake</span>(<span class="hljs-number">10</span>, <span class="hljs-number">50</span> &#43; <span class="hljs-number">80</span> * i, <span class="hljs-number">100</span>, <span class="hljs-number">60</span>);
+            [ins setTitle:titles[i] forState:<span class="hljs-built_in">UIControlStateNormal</span>];
+            [ins addTarget:<span class="hljs-keyword">self</span> action:<span class="hljs-keyword">@selector</span>(animationBegin:) forControlEvents:<span class="hljs-built_in">UIControlEventTouchUpInside</span>];
+        }];
+    }
+
+
+    [<span class="hljs-built_in">UIView</span> easyCoder:^(<span class="hljs-built_in">UIView</span> *ins) {
+
+        ins<span class="hljs-variable">.frame</span> = <span class="hljs-built_in">CGRectMake</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">100</span>, <span class="hljs-number">100</span>);
+        ins<span class="hljs-variable">.backgroundColor</span> = [<span class="hljs-built_in">UIColor</span> redColor];
+        ins<span class="hljs-variable">.center</span> = <span class="hljs-keyword">self</span><span class="hljs-variable">.view</span><span class="hljs-variable">.center</span>;
+
+        weakSelf<span class="hljs-variable">.demoView</span> = ins;
+        [weakSelf<span class="hljs-variable">.view</span> addSubview:weakSelf<span class="hljs-variable">.demoView</span>];
+    }];
+
+
+
+}
+
+-(<span class="hljs-keyword">void</span>)animationBegin:(<span class="hljs-built_in">UIButton</span> *)btn{
+    <span class="hljs-built_in">CABasicAnimation</span> *animation = <span class="hljs-literal">nil</span>;
+    <span class="hljs-keyword">switch</span> (btn<span class="hljs-variable">.tag</span>) {
+        <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:{
+            <span class="hljs-comment">//淡如淡出</span>
+            animation = [<span class="hljs-built_in">CABasicAnimation</span> animationWithKeyPath:<span class="hljs-string">@&quot;opacity&quot;</span>];
+            [animation setFromValue:@<span class="hljs-number">1.0</span>];
+            [animation setToValue:@<span class="hljs-number">0.1</span>];
+        }<span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:{
+            <span class="hljs-comment">//缩放</span>
+            animation = [<span class="hljs-built_in">CABasicAnimation</span> animationWithKeyPath:<span class="hljs-string">@&quot;transform.scale&quot;</span>];
+            [animation setFromValue:@<span class="hljs-number">1.0</span>];<span class="hljs-comment">//设置起始&#20540;</span>
+            [animation setToValue:@<span class="hljs-number">0.1</span>];<span class="hljs-comment">//设置目标&#20540;</span>
+        }<span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:{
+            <span class="hljs-comment">//旋转</span>
+            animation = [<span class="hljs-built_in">CABasicAnimation</span> animationWithKeyPath:<span class="hljs-string">@&quot;transform.rotation&quot;</span>];
+            <span class="hljs-comment">//setFromValue不设置,默认以当前状态为准</span>
+            [animation setToValue:@(M_PI)];
+        }<span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:{
+            <span class="hljs-comment">//平移</span>
+            animation = [<span class="hljs-built_in">CABasicAnimation</span> animationWithKeyPath:<span class="hljs-string">@&quot;position&quot;</span>];
+            <span class="hljs-comment">//setFromValue不设置,默认以当前状态为准</span>
+            [animation setToValue:[<span class="hljs-built_in">NSValue</span> valueWith<span class="hljs-built_in">CGPoint</span>:<span class="hljs-built_in">CGPointMake</span>(<span class="hljs-keyword">self</span><span class="hljs-variable">.view</span><span class="hljs-variable">.center</span><span class="hljs-variable">.x</span>, <span class="hljs-keyword">self</span><span class="hljs-variable">.view</span><span class="hljs-variable">.center</span><span class="hljs-variable">.y</span> &#43; <span class="hljs-number">200</span>)]];
+        }<span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">default</span>:<span class="hljs-keyword">break</span>;
+    }
+    [animation setDelegate:<span class="hljs-keyword">self</span>];<span class="hljs-comment">//代理回调</span>
+    [animation setDuration:<span class="hljs-number">0.25</span>];<span class="hljs-comment">//设置动画时间，单次动画时间</span>
+    [animation setRemovedOnCompletion:<span class="hljs-literal">NO</span>];<span class="hljs-comment">//默认为YES,设置为NO时setFillMode有效</span>
+    <span class="hljs-comment">/**
+     *设置时间函数CAMediaTimingFunction
+     *kCAMediaTimingFunctionLinear 匀速
+     *kCAMediaTimingFunctionEaseIn 开始速度慢，后来速度快
+     *kCAMediaTimingFunctionEaseOut 开始速度快 后来速度慢
+     *kCAMediaTimingFunctionEaseInEaseOut = kCAMediaTimingFunctionDefault 中间速度快，两头速度慢
+     */</span>
+    [animation setTimingFunction:[<span class="hljs-built_in">CAMediaTimingFunction</span> functionWithName:k<span class="hljs-built_in">CAMediaTimingFunctionEaseInEaseOut</span>]];
+    <span class="hljs-comment">//设置自动翻转</span>
+    <span class="hljs-comment">//设置自动翻转以后单次动画时间不变，总动画时间增加一倍，它会让你前半部分的动画以相反的方式动画过来</span>
+    <span class="hljs-comment">//比如说你设置执行一次动画，从a到b时间为1秒，设置自动翻转以后动画的执行方式为，先从a到b执行一秒，然后从b到a再执行一下动画结束</span>
+    [animation setAutoreverses:<span class="hljs-literal">YES</span>];
+    <span class="hljs-comment">//kCAFillModeForwards//动画结束后回到准备状态</span>
+    <span class="hljs-comment">//kCAFillModeBackwards//动画结束后保持最后状态</span>
+    <span class="hljs-comment">//kCAFillModeBoth//动画结束后回到准备状态,并保持最后状态</span>
+    <span class="hljs-comment">//kCAFillModeRemoved//执行完成移除动画</span>
+    [animation setFillMode:k<span class="hljs-built_in">CAFillModeBoth</span>];
+    <span class="hljs-comment">//将动画添加到layer,添加到图层开始执行动画，</span>
+    <span class="hljs-comment">//注意:key&#20540;的设置与否会影响动画的效果</span>
+    <span class="hljs-comment">//如果不设置key&#20540;每次执行都会创建一个动画，然后创建的动画会叠加在图层上</span>
+    <span class="hljs-comment">//如果设置key&#20540;，系统执行这个动画时会先检查这个动画有没有被创建，如果没有的话就创建一个，如果有的话就重新从头开始执行这个动画</span>
+    <span class="hljs-comment">//你可以通过key&#20540;获取或者删除一个动画:</span>
+    <span class="hljs-comment">//[self.demoView.layer animationForKey:@&quot;&quot;];</span>
+    <span class="hljs-comment">//[self.demoView.layer removeAnimationForKey:@&quot;&quot;]</span>
+    [<span class="hljs-keyword">self</span><span class="hljs-variable">.demoView</span><span class="hljs-variable">.layer</span> addAnimation:animation forKey:<span class="hljs-string">@&quot;baseanimation&quot;</span>];
+}
+
+<span class="hljs-comment">/**
+ *  动画开始和动画结束时 self.demoView.center 是一直不变的，说明动画并没有改变视图本身的位置
+ */</span>
+- (<span class="hljs-keyword">void</span>)animationDidStart:(<span class="hljs-built_in">CAAnimation</span> *)anim{
+    <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;动画开始------：%@&quot;</span>,    <span class="hljs-built_in">NSStringFromCGPoint</span>(<span class="hljs-keyword">self</span><span class="hljs-variable">.demoView</span><span class="hljs-variable">.center</span>));
+}
+- (<span class="hljs-keyword">void</span>)animationDidStop:(<span class="hljs-built_in">CAAnimation</span> *)anim finished:(<span class="hljs-built_in">BOOL</span>)flag{
+    <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;动画结束------：%@&quot;</span>,    <span class="hljs-built_in">NSStringFromCGPoint</span>(<span class="hljs-keyword">self</span><span class="hljs-variable">.demoView</span><span class="hljs-variable">.center</span>));
+}</code></pre>
+<p>以上效果和代码还有注释都解释的很详细了，然后源码在这里：<a target="_blank" target="_blank" href="https://github.com/shmxybfq/TFDemos.git">人口统计学基本动画</a></p>
+<h4>CASpringAnimation弹性动画</h4>
+<p>CASpringAnimation的属性（iOS9新加）</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">//理解下面的属性的时候可以结合现实物理现象,比如把它想象成一个弹簧上挂着一个金属小球</span>
+<span class="hljs-comment">//质量,振幅和质量成反比</span>
+<span class="hljs-keyword">@property</span> <span class="hljs-built_in">CGFloat</span> mass;
+<span class="hljs-comment">//刚度系数(劲度系数/弹性系数),刚度系数越大,形变产生的力就越大,运动越快</span>
+<span class="hljs-keyword">@property</span> <span class="hljs-built_in">CGFloat</span> stiffness;
+<span class="hljs-comment">//阻&#23612;系数,阻止弹簧伸缩的系数,阻&#23612;系数越大,停止越快,可以认为它是阻力系数</span>
+<span class="hljs-keyword">@property</span> <span class="hljs-built_in">CGFloat</span> damping;
+<span class="hljs-comment">//初始速率,动画视图的初始速度大小速率为正数时,速度方向与运动方向一致,速率为负数时,速度方向与运动方向相反.</span>
+<span class="hljs-keyword">@property</span> <span class="hljs-built_in">CGFloat</span> initialVelocity;
+<span class="hljs-comment">//结算时间,只读.返回弹簧动画到停止时的估算时间，根据当前的动画参数估算通常弹簧动画的时间使用结算时间比较准确</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">readonly</span>) <span class="hljs-built_in">CFTimeInterval</span> settlingDuration;</code></pre>
+<p>下面我们写一个演示看看效果：</p>
+<div class="image-package imagebubble"><img src="http://upload-images.jianshu.io/upload_images/3270116-3fd724899a6d2b66.gif?imageMogr2/auto-orient/strip" class="imagebubble-image" alt=""><br>
+<div class="image-caption">弹簧弹性动画.gif注意</div>
+</div>
+<p>以上GIF的代码为：</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-built_in">CASpringAnimation</span> *spring = [<span class="hljs-built_in">CASpringAnimation</span> animationWithKeyPath:<span class="hljs-string">@&quot;position.y&quot;</span>];
+spring<span class="hljs-variable">.damping</span> = <span class="hljs-number">5</span>;
+spring<span class="hljs-variable">.stiffness</span> = <span class="hljs-number">100</span>;
+spring<span class="hljs-variable">.mass</span> = <span class="hljs-number">1</span>;
+spring<span class="hljs-variable">.initialVelocity</span> = <span class="hljs-number">0</span>;
+spring<span class="hljs-variable">.duration</span> = spring<span class="hljs-variable">.settlingDuration</span>;
+spring<span class="hljs-variable">.fromValue</span> = @(<span class="hljs-keyword">self</span><span class="hljs-variable">.demoView1</span><span class="hljs-variable">.center</span><span class="hljs-variable">.y</span>);
+spring<span class="hljs-variable">.toValue</span> = @(<span class="hljs-keyword">self</span><span class="hljs-variable">.demoView1</span><span class="hljs-variable">.center</span><span class="hljs-variable">.y</span> &#43; (btn<span class="hljs-variable">.selected</span>?&#43;<span class="hljs-number">200</span>:-<span class="hljs-number">200</span>));
+spring<span class="hljs-variable">.fillMode</span> = k<span class="hljs-built_in">CAFillModeForwards</span>;
+[<span class="hljs-keyword">self</span><span class="hljs-variable">.demoView1</span><span class="hljs-variable">.layer</span> addAnimation:spring forKey:<span class="hljs-literal">nil</span>];</code></pre>
+<p>CASpringAnimation效果不错，但是很不幸只有iOS9 &#43;系统才能使用，这就很操蛋了以前项目有过这样的需求，然后就自己写了一个类&#20284;的动画，效果在下面：</p>
+<div class="image-package imagebubble"><img src="http://upload-images.jianshu.io/upload_images/3270116-02495b792640eab6.gif?imageMogr2/auto-orient/strip" class="imagebubble-image" alt=""><br>
+<div class="image-caption">自定义弹性动画.gif注意</div>
+</div>
+<p>然后上面自定义弹性动画的代码在这里：</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-preprocessor">#import <span class="hljs-title">&quot;UIView&#43;ShakeAnimation.h&quot;</span></span>
+<span class="hljs-preprocessor">#import <span class="hljs-title">&lt;objc/runtime.h&gt;</span></span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">void</span> (^RunAnimationBlock)();
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">UIView</span> ()</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>,  <span class="hljs-keyword">copy</span>)RunAnimationBlock block;
+<span class="hljs-keyword">@end</span>
+
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">UIView</span> (<span class="hljs-title">ShakeAnimation</span>)</span>
+
+-(<span class="hljs-keyword">void</span>)startAnimationFromFrame:(<span class="hljs-built_in">CGRect</span>)framef
+                       toFrame:(<span class="hljs-built_in">CGRect</span>)framet
+                      duration:(<span class="hljs-built_in">CGFloat</span>)duration
+                    shakeTimes:(<span class="hljs-built_in">NSInteger</span>)times
+                stretchPercent:(<span class="hljs-built_in">CGFloat</span>)stretchPercent
+                    completion:(<span class="hljs-keyword">void</span> (^)(<span class="hljs-built_in">BOOL</span> finished))completion
+{
+    <span class="hljs-keyword">self</span><span class="hljs-variable">.layer</span><span class="hljs-variable">.masksToBounds</span> = <span class="hljs-literal">YES</span>;
+
+    __block <span class="hljs-built_in">CGFloat</span> perTime = duration / times;
+    __block <span class="hljs-built_in">CGFloat</span> perx = (framet<span class="hljs-variable">.origin</span><span class="hljs-variable">.x</span> - framef<span class="hljs-variable">.origin</span><span class="hljs-variable">.x</span>) * stretchPercent / times;
+    __block <span class="hljs-built_in">CGFloat</span> pery = (framet<span class="hljs-variable">.origin</span><span class="hljs-variable">.y</span> - framef<span class="hljs-variable">.origin</span><span class="hljs-variable">.y</span>) * stretchPercent / times;
+    __block <span class="hljs-built_in">CGFloat</span> perw = (framet<span class="hljs-variable">.size</span><span class="hljs-variable">.width</span> - framef<span class="hljs-variable">.size</span><span class="hljs-variable">.width</span>) * stretchPercent / times;
+    __block <span class="hljs-built_in">CGFloat</span> perh = (framet<span class="hljs-variable">.size</span><span class="hljs-variable">.height</span> - framef<span class="hljs-variable">.size</span><span class="hljs-variable">.height</span>) * stretchPercent / times;
+
+    __block <span class="hljs-built_in">UIView</span> * tmpView = <span class="hljs-keyword">self</span>;
+    __block <span class="hljs-built_in">NSInteger</span> tmpTimes = (<span class="hljs-built_in">NSInteger</span>)times;
+    __block <span class="hljs-built_in">NSInteger</span> tmpsymbol = -<span class="hljs-number">1</span>;
+
+    __<span class="hljs-keyword">weak</span> <span class="hljs-keyword">typeof</span>(<span class="hljs-keyword">self</span>) weakSelf = <span class="hljs-keyword">self</span>;
+    <span class="hljs-keyword">self</span><span class="hljs-variable">.block</span> = ^{
+
+        [<span class="hljs-built_in">UIView</span> animateWithDuration:perTime animations:^{
+
+            <span class="hljs-built_in">CGFloat</span> x = framet<span class="hljs-variable">.origin</span><span class="hljs-variable">.x</span> &#43; perx * tmpTimes;
+            <span class="hljs-built_in">CGFloat</span> y = framet<span class="hljs-variable">.origin</span><span class="hljs-variable">.y</span> &#43; pery * tmpTimes;
+            <span class="hljs-built_in">CGFloat</span> w = framet<span class="hljs-variable">.size</span><span class="hljs-variable">.width</span> &#43; perw * tmpTimes;
+            <span class="hljs-built_in">CGFloat</span> h = framet<span class="hljs-variable">.size</span><span class="hljs-variable">.height</span> &#43; perh * tmpTimes;
+            <span class="hljs-built_in">CGRect</span> rect = <span class="hljs-built_in">CGRectMake</span>(x, y, w, h);
+
+            tmpView<span class="hljs-variable">.frame</span> = rect;
+        }completion:^(<span class="hljs-built_in">BOOL</span> finished) {
+
+            tmpTimes = tmpTimes &#43; tmpsymbol;
+            tmpTimes = - tmpTimes;
+            tmpsymbol = - tmpsymbol;
+            <span class="hljs-keyword">if</span> (tmpTimes != <span class="hljs-number">0</span>) {
+                weakSelf<span class="hljs-variable">.block</span>();
+            }<span class="hljs-keyword">else</span>{
+                [<span class="hljs-built_in">UIView</span> animateWithDuration:perTime animations:^{
+                    tmpView<span class="hljs-variable">.frame</span> = framet;
+                }completion:^(<span class="hljs-built_in">BOOL</span> finished) {
+                    completion(<span class="hljs-literal">YES</span>);
+                }];
+            }
+        }];
+    };
+
+    <span class="hljs-keyword">self</span><span class="hljs-variable">.block</span>();
+}
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">char</span> RunAnimationBlockKey;
+-(RunAnimationBlock)block{
+    <span class="hljs-keyword">return</span> objc_getAssociatedObject(<span class="hljs-keyword">self</span>, &amp;RunAnimationBlockKey);
+}
+-(<span class="hljs-keyword">void</span>)setBlock:(RunAnimationBlock)block{
+    objc_setAssociatedObject(<span class="hljs-keyword">self</span>, &amp;RunAnimationBlockKey, block, OBJC_ASSO<span class="hljs-built_in">CIATION_COPY_NONATOMIC</span>);
+}
+<span class="hljs-keyword">@end</span></code></pre>
+<p>调用：</p>
+<pre class="hljs cpp"><code class="cpp">[self.demoView2 startAnimationFromFrame:CGRectMake(<span class="hljs-number">10</span>, <span class="hljs-number">300</span>, <span class="hljs-number">100</span>, <span class="hljs-number">100</span>)
+                                toFrame:CGRectMake(<span class="hljs-number">10</span>, <span class="hljs-number">300</span>, <span class="hljs-number">300</span>, <span class="hljs-number">100</span>)
+                               duration:<span class="hljs-number">0.5</span>
+                             shakeTimes:<span class="hljs-number">5</span>
+                         stretchPercent:<span class="hljs-number">0.3</span>
+                             completion:^(BOOL finished) {
+                                 NSLog(@<span class="hljs-string">&quot;======over======:%@&quot;</span>,self.demoView1);
+                             }];</code></pre>
+<p>上面两个弹性动画的代码在这里：<a target="_blank" target="_blank" href="https://github.com/shmxybfq/TFDemos.git">人口统计学弹性动画</a></p>
+<h4>CAKeyframeAnimation关键帧动画</h4>
+<p>CAKeyframeAnimation的属性</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">//关键帧&#20540;数组,一组变化&#20540;</span>
+<span class="hljs-keyword">@property</span>(nullable, <span class="hljs-keyword">copy</span>) <span class="hljs-built_in">NSArray</span> *values;
+<span class="hljs-comment">//关键帧帧路径,优先级比values大</span>
+<span class="hljs-keyword">@property</span>(nullable) <span class="hljs-built_in">CGPathRef</span> path;
+<span class="hljs-comment">//每一帧对应的时间,时间可以控制速度.它和每一个帧相对应,取&#20540;为0.0-1.0,不设则每一帧时间相等.</span>
+<span class="hljs-keyword">@property</span>(nullable, <span class="hljs-keyword">copy</span>) <span class="hljs-built_in">NSArray</span>&lt;<span class="hljs-built_in">NSNumber</span> *&gt; *keyTimes;
+<span class="hljs-comment">//每一帧对应的时间曲线函数,也就是每一帧的运动节奏</span>
+<span class="hljs-keyword">@property</span>(nullable, <span class="hljs-keyword">copy</span>) <span class="hljs-built_in">NSArray</span>&lt;<span class="hljs-built_in">CAMediaTimingFunction</span> *&gt; *timingFunctions;
+<span class="hljs-comment">//动画的计算模式,默认&#20540;: kCAAnimationLinear.有以下几个&#20540;:</span>
+<span class="hljs-comment">//kCAAnimationLinear//关键帧为座标点的时候,关键帧之间直接直线相连进行插&#20540;计算;</span>
+<span class="hljs-comment">//kCAAnimationDiscrete//离散的,也就是没有补间动画</span>
+<span class="hljs-comment">//kCAAnimationPaced//平均，keyTimes跟timeFunctions失效</span>
+<span class="hljs-comment">//kCAAnimationCubic对关键帧为座标点的关键帧进行圆滑曲线相连后插&#20540;计算,对于曲线的形状还可以通过tensionValues,continuityValues,biasValues来进行调整自定义,keyTimes跟timeFunctions失效</span>
+<span class="hljs-comment">//kCAAnimationCubicPaced在kCAAnimationCubic的基础上使得动画运行变得均匀,就是系统时间内运动的距离相同,,keyTimes跟timeFunctions失效</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">copy</span>) <span class="hljs-built_in">NSString</span> *calculationMode;
+<span class="hljs-comment">//动画的张力,当动画为立方计算模式的时候此属性提供了控制插&#20540;,因为每个关键帧都可能有张力所以连续性会有所偏差它的范围为[-1,1].同样是此作用</span>
+<span class="hljs-keyword">@property</span>(nullable, <span class="hljs-keyword">copy</span>) <span class="hljs-built_in">NSArray</span>&lt;<span class="hljs-built_in">NSNumber</span> *&gt; *tensionValues;
+<span class="hljs-comment">//动画的连续性&#20540;</span>
+<span class="hljs-keyword">@property</span>(nullable, <span class="hljs-keyword">copy</span>) <span class="hljs-built_in">NSArray</span>&lt;<span class="hljs-built_in">NSNumber</span> *&gt; *continuityValues;
+<span class="hljs-comment">//动画的偏斜率</span>
+<span class="hljs-keyword">@property</span>(nullable, <span class="hljs-keyword">copy</span>) <span class="hljs-built_in">NSArray</span>&lt;<span class="hljs-built_in">NSNumber</span> *&gt; *biasValues;
+<span class="hljs-comment">//动画沿路径旋转方式,默认为nil.它有两个&#20540;:</span>
+<span class="hljs-comment">//kCAAnimationRotateAuto//自动旋转,</span>
+<span class="hljs-comment">//kCAAnimationRotateAutoReverse//自动翻转</span>
+<span class="hljs-keyword">@property</span>(nullable, <span class="hljs-keyword">copy</span>) <span class="hljs-built_in">NSString</span> *rotationMode;</code></pre>
+<p>CAKeyframeAnimation可以做很丰富的效果，下面展示了几种纯CAKeyframeAnimation做的效果：</p>
+<div class="image-package imagebubble"><img src="http://upload-images.jianshu.io/upload_images/3270116-9645a22fc0fc0638.gif?imageMogr2/auto-orient/strip" class="imagebubble-image" alt=""><br>
+<div class="image-caption">CAKeyframeAnimation.gif</div>
+</div>
+<p>以上效果的代码都比较简单，量也比较大，这里就不贴出来了，这里可以下载：<a target="_blank" target="_blank" href="https://github.com/shmxybfq/TFDemos.git">人口统计学关键帧动画</a></p>
+<h4>CAAnimationGroup动画组</h4>
+<p>CAAnimationGroup的属性</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">//只有一个属性,数组中接受CAAnimation元素</span>
+<span class="hljs-keyword">@property</span>(nullable, <span class="hljs-keyword">copy</span>) <span class="hljs-built_in">NSArray</span>&lt;<span class="hljs-built_in">CAAnimation</span> *&gt; *animations;</code></pre>
+<blockquote>
+<ul>
+<li>可以看到CAAnimationGroup只有一个属性一个CAAnimation数组。而且它继承于CAAnimation，它具有CAAnimation的特性，所以它的用法和CAAnimation是一样的，不同的是他可以包含ñ个动画，也就是说他可以接受很多个CAAnimation并且可以让它们一起开始，这就造成了动画效果的叠加，效果就是ñ个动画同时进行。</li></ul>
+</blockquote>
+<p>来看一个简单的效果：</p>
+<div class="image-package imagebubble"><img src="http://upload-images.jianshu.io/upload_images/3270116-ee1b00bd9988e12a.gif?imageMogr2/auto-orient/strip" class="imagebubble-image" alt=""><br>
+<div class="image-caption">CAAnimationGroup.gif</div>
+</div>
+<p>这个是动画是，旋转，抖动，透明度一起作用在一起的效果，代码在这里<a target="_blank" target="_blank" href="">人口统计学动画组</a></p>
+<h4>CATransition转场动画</h4>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">//转场类型,字符串类型参数.系统提供了四中动画形式:</span>
+<span class="hljs-comment">//kCATransitionFade//逐渐消失</span>
+<span class="hljs-comment">//kCATransitionMoveIn//移进来</span>
+<span class="hljs-comment">//kCATransitionPush//推进来</span>
+<span class="hljs-comment">//kCATransitionReveal//揭开</span>
+<span class="hljs-comment">//另外,除了系统给的这几种动画效果,我们还可以使用系统私有的动画效果:</span>
+<span class="hljs-comment">//@&quot;cube&quot;,//立方体翻转效果</span>
+<span class="hljs-comment">//@&quot;oglFlip&quot;,//翻转效果</span>
+<span class="hljs-comment">//@&quot;suckEffect&quot;,//收缩效果,动画方向不可控</span>
+<span class="hljs-comment">//@&quot;rippleEffect&quot;,//水滴波纹效果,动画方向不可控</span>
+<span class="hljs-comment">//@&quot;pageCurl&quot;,//向上翻页效果</span>
+<span class="hljs-comment">//@&quot;pageUnCurl&quot;,//向下翻页效果</span>
+<span class="hljs-comment">//@&quot;cameralIrisHollowOpen&quot;,//摄像头打开效果,动画方向不可控</span>
+<span class="hljs-comment">//@&quot;cameraIrisHollowClose&quot;,//摄像头关闭效果,动画方向不可控</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">copy</span>) <span class="hljs-built_in">NSString</span> *type;
+<span class="hljs-comment">//转场方向,系统一共提供四个方向:</span>
+<span class="hljs-comment">//kCATransitionFromRight//从右开始</span>
+<span class="hljs-comment">//kCATransitionFromLeft//从左开始</span>
+<span class="hljs-comment">//kCATransitionFromTop//从上开始</span>
+<span class="hljs-comment">//kCATransitionFromBottom//从下开始</span>
+<span class="hljs-keyword">@property</span>(nullable, <span class="hljs-keyword">copy</span>) <span class="hljs-built_in">NSString</span> *subtype;
+<span class="hljs-comment">//开始进度,默认0.0.如果设置0.3,那么动画将从动画的0.3的部分开始</span>
+<span class="hljs-keyword">@property</span> <span class="hljs-keyword">float</span> startProgress;
+<span class="hljs-comment">//结束进度,默认1.0.如果设置0.6,那么动画将从动画的0.6部分以后就会结束</span>
+<span class="hljs-keyword">@property</span> <span class="hljs-keyword">float</span> endProgress;
+<span class="hljs-comment">//开始进度</span>
+<span class="hljs-keyword">@property</span>(nullable, <span class="hljs-keyword">strong</span>) <span class="hljs-keyword">id</span> filter;</code></pre>
+<blockquote>
+<p>CATransition也是继承CAAnimation，系统默认提供了12种动画样式，加上4个动画方向，除了方向不可控的四种效果外，大概一共提供了36种动画。</p>
+</blockquote>
+<p>另外系统还给UIView的添加了很多分类方法可以快速完成一些简单的动画，如下：</p>
+<p><strong>的UIView（UIViewAnimation）</strong></p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">UIView</span>(<span class="hljs-title">UIViewAnimation</span>)</span>
+
+&#43; (<span class="hljs-keyword">void</span>)beginAnimations:(nullable <span class="hljs-built_in">NSString</span> *)animationID context:(nullable <span class="hljs-keyword">void</span> *)context;  <span class="hljs-comment">// additional context info passed to will start/did stop selectors. begin/commit can be nested</span>
+<span class="hljs-comment">//提交动画</span>
+&#43; (<span class="hljs-keyword">void</span>)commitAnimations;
+<span class="hljs-comment">//设置代理</span>
+&#43; (<span class="hljs-keyword">void</span>)setAnimationDelegate:(nullable <span class="hljs-keyword">id</span>)delegate;                          <span class="hljs-comment">//设置动画开始方法</span>
+&#43; (<span class="hljs-keyword">void</span>)setAnimationWillStartSelector:(nullable SEL)selector;                
+<span class="hljs-comment">//设置动画结束方法</span>
+&#43; (<span class="hljs-keyword">void</span>)setAnimationDidStopSelector:(nullable SEL)selector;
+<span class="hljs-comment">//设置动画时间:default = 0.2</span>
+&#43; (<span class="hljs-keyword">void</span>)setAnimationDuration:(<span class="hljs-built_in">NSTimeInterval</span>)duration;              
+<span class="hljs-comment">//设置动画延迟开始时间:default = 0.0</span>
+&#43; (<span class="hljs-keyword">void</span>)setAnimationDelay:(<span class="hljs-built_in">NSTimeInterval</span>)delay;
+<span class="hljs-comment">//设置动画延迟开始日期:default = now ([NSDate date])</span>
+&#43; (<span class="hljs-keyword">void</span>)setAnimationStartDate:(<span class="hljs-built_in">NSDate</span> *)startDate;                  
+<span class="hljs-comment">//设置动画运动曲线:default =UIViewAnimationCurveEaseInOut</span>
+<span class="hljs-comment">//UIViewAnimationCurveEaseInOut,//慢进慢出</span>
+<span class="hljs-comment">//UIViewAnimationCurveEaseIn, //慢进快出</span>
+<span class="hljs-comment">//UIViewAnimationCurveEaseOut,//快进慢出</span>
+<span class="hljs-comment">//UIViewAnimationCurveLinear//匀速</span>
+&#43; (<span class="hljs-keyword">void</span>)setAnimationCurve:(<span class="hljs-built_in">UIViewAnimationCurve</span>)curve;              
+<span class="hljs-comment">//设置重复次数: default = 0.0.  May be fractional</span>
+&#43; (<span class="hljs-keyword">void</span>)setAnimationRepeatCount:(<span class="hljs-keyword">float</span>)repeatCount;
+<span class="hljs-comment">//设置是否翻转动画: default = NO. used if repeat </span>
+&#43; (<span class="hljs-keyword">void</span>)setAnimationRepeatAutoreverses:(<span class="hljs-built_in">BOOL</span>)repeatAutoreverses;
+<span class="hljs-comment">//设置动画是否从当前状态开始:default = NO</span>
+&#43; (<span class="hljs-keyword">void</span>)setAnimationBeginsFromCurrentState:(<span class="hljs-built_in">BOOL</span>)fromCurrentState;
+<span class="hljs-comment">//设置动画类型</span>
+&#43; (<span class="hljs-keyword">void</span>)setAnimationTransition:(<span class="hljs-built_in">UIViewAnimationTransition</span>)transition forView:(<span class="hljs-built_in">UIView</span> *)view cache:(<span class="hljs-built_in">BOOL</span>)cache; 
+<span class="hljs-comment">//设置动画是否有效</span>
+&#43; (<span class="hljs-keyword">void</span>)setAnimationsEnabled:(<span class="hljs-built_in">BOOL</span>)enabled;
+<span class="hljs-comment">//</span>
+&#43; (<span class="hljs-built_in">BOOL</span>)areAnimationsEnabled;
+<span class="hljs-comment">//</span>
+&#43; (<span class="hljs-keyword">void</span>)performWithoutAnimation:(<span class="hljs-keyword">void</span> (^)(<span class="hljs-keyword">void</span>))actionsWithoutAnimation
+<span class="hljs-comment">//</span>
+&#43; (<span class="hljs-built_in">NSTimeInterval</span>)inheritedAnimationDuration 
+<span class="hljs-keyword">@end</span></code></pre>
+<p><strong>的UIView（UIViewAnimationWithBlocks）</strong></p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">UIView</span>(<span class="hljs-title">UIViewAnimationWithBlocks</span>)</span>
+<span class="hljs-comment">//以下方法都大同小异,就不一一做注释了</span>
+&#43; (<span class="hljs-keyword">void</span>)animateWithDuration:(<span class="hljs-built_in">NSTimeInterval</span>)duration delay:(<span class="hljs-built_in">NSTimeInterval</span>)delay options:(<span class="hljs-built_in">UIViewAnimationOptions</span>)options animations:(<span class="hljs-keyword">void</span> (^)(<span class="hljs-keyword">void</span>))animations completion:(<span class="hljs-keyword">void</span> (^ __nullable)(<span class="hljs-built_in">BOOL</span> finished))completion;
+&#43; (<span class="hljs-keyword">void</span>)animateWithDuration:(<span class="hljs-built_in">NSTimeInterval</span>)duration animations:(<span class="hljs-keyword">void</span> (^)(<span class="hljs-keyword">void</span>))animations completion:(<span class="hljs-keyword">void</span> (^ __nullable)(<span class="hljs-built_in">BOOL</span> finished))completion 
+&#43; (<span class="hljs-keyword">void</span>)animateWithDuration:(<span class="hljs-built_in">NSTimeInterval</span>)duration animations:(<span class="hljs-keyword">void</span> (^)(<span class="hljs-keyword">void</span>))animations;
+&#43; (<span class="hljs-keyword">void</span>)animateWithDuration:(<span class="hljs-built_in">NSTimeInterval</span>)duration delay:(<span class="hljs-built_in">NSTimeInterval</span>)delay usingSpringWithDamping:(<span class="hljs-built_in">CGFloat</span>)dampingRatio initialSpringVelocity:(<span class="hljs-built_in">CGFloat</span>)velocity options:(<span class="hljs-built_in">UIViewAnimationOptions</span>)options animations:(<span class="hljs-keyword">void</span> (^)(<span class="hljs-keyword">void</span>))animations completion:(<span class="hljs-keyword">void</span> (^ __nullable)(<span class="hljs-built_in">BOOL</span> finished))completion
+&#43; (<span class="hljs-keyword">void</span>)transitionWithView:(<span class="hljs-built_in">UIView</span> *)view duration:(<span class="hljs-built_in">NSTimeInterval</span>)duration options:(<span class="hljs-built_in">UIViewAnimationOptions</span>)options animations:(<span class="hljs-keyword">void</span> (^ __nullable)(<span class="hljs-keyword">void</span>))animations completion:(<span class="hljs-keyword">void</span> (^ __nullable)(<span class="hljs-built_in">BOOL</span> finished))completion;
+&#43; (<span class="hljs-keyword">void</span>)transitionFromView:(<span class="hljs-built_in">UIView</span> *)fromView toView:(<span class="hljs-built_in">UIView</span> *)toView duration:(<span class="hljs-built_in">NSTimeInterval</span>)duration options:(<span class="hljs-built_in">UIViewAnimationOptions</span>)options completion:(<span class="hljs-keyword">void</span> (^ __nullable)(<span class="hljs-built_in">BOOL</span> finished))completion;
+&#43; (<span class="hljs-keyword">void</span>)performSystemAnimation:(<span class="hljs-built_in">UISystemAnimation</span>)animation onViews:(<span class="hljs-built_in">NSArray</span>&lt;__kindof <span class="hljs-built_in">UIView</span> *&gt; *)views options:(<span class="hljs-built_in">UIViewAnimationOptions</span>)options animations:(<span class="hljs-keyword">void</span> (^ __nullable)(<span class="hljs-keyword">void</span>))parallelAnimations completion:(<span class="hljs-keyword">void</span> (^ __nullable)(<span class="hljs-built_in">BOOL</span> finished))completion <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">7</span>_0);
+
+<span class="hljs-keyword">@end</span></code></pre>
+<p><strong>的UIView（UIViewKeyframeAnimations）</strong></p>
+<pre class="hljs objectivec"><code class="objectivec">&#43; (<span class="hljs-keyword">void</span>)animateKeyframesWithDuration:(<span class="hljs-built_in">NSTimeInterval</span>)duration delay:(<span class="hljs-built_in">NSTimeInterval</span>)delay options:(<span class="hljs-built_in">UIViewKeyframeAnimationOptions</span>)options animations:(<span class="hljs-keyword">void</span> (^)(<span class="hljs-keyword">void</span>))animations completion:(<span class="hljs-keyword">void</span> (^ __nullable)(<span class="hljs-built_in">BOOL</span> finished))completion;
+&#43; (<span class="hljs-keyword">void</span>)addKeyframeWithRelativeStartTime:(<span class="hljs-keyword">double</span>)frameStartTime relativeDuration:(<span class="hljs-keyword">double</span>)frameDuration animations:(<span class="hljs-keyword">void</span> (^)(<span class="hljs-keyword">void</span>))animations</code></pre>
+<p>以上方法比较多，找&#20540;得说的简单说一下吧：</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">//单视图转场动画</span>
+&#43; (<span class="hljs-keyword">void</span>)transitionWithView:(<span class="hljs-built_in">UIView</span> *)view
+                  duration:(<span class="hljs-built_in">NSTimeInterval</span>)duration 
+                   options:(<span class="hljs-built_in">UIViewAnimationOptions</span>)options
+                animations:(<span class="hljs-keyword">void</span> (^ __nullable)(<span class="hljs-keyword">void</span>))animations
+                completion:(<span class="hljs-keyword">void</span> (^ __nullable)(<span class="hljs-built_in">BOOL</span> finished))completion
+<span class="hljs-comment">//双视图转场动画</span>
+&#43; (<span class="hljs-keyword">void</span>)transitionFromView:(<span class="hljs-built_in">UIView</span> *)fromView
+                    toView:(<span class="hljs-built_in">UIView</span> *)toView 
+                  duration:(<span class="hljs-built_in">NSTimeInterval</span>)duration 
+                    options:(<span class="hljs-built_in">UIViewAnimationOptions</span>)options
+              completion:(<span class="hljs-keyword">void</span> (^ __nullable)(<span class="hljs-built_in">BOOL</span> finished))completion</code></pre>
+<blockquote>
+<p>这两个都是转场动画，不同的是第一个是单视图转场，第二个是双视图转场不过需要注意的是：单视图转场动画只能用作属性动画做不到的转场效果，比如属性动画不能给的UIImageView的形象赋&#20540;操作做动画效果等。</p>
+</blockquote>
+<p>我们可以看到以上两个方法中都有一个共同的参数：<br>
+<strong>UIViewAnimationOptions</strong></p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">typedef</span> <span class="hljs-title">NS_OPTIONS</span><span class="hljs-params">(NSUInteger, UIViewAnimationOptions)</span> </span>{
+    UIViewAnimationOptionLayoutSubviews            = <span class="hljs-number">1</span> &lt;&lt;  <span class="hljs-number">0</span>,
+    UIViewAnimationOptionAllowUserInteraction      = <span class="hljs-number">1</span> &lt;&lt;  <span class="hljs-number">1</span>, <span class="hljs-comment">// turn on user interaction while animating</span>
+    UIViewAnimationOptionBeginFromCurrentState     = <span class="hljs-number">1</span> &lt;&lt;  <span class="hljs-number">2</span>, <span class="hljs-comment">// start all views from current value, not initial value</span>
+    UIViewAnimationOptionRepeat                    = <span class="hljs-number">1</span> &lt;&lt;  <span class="hljs-number">3</span>, <span class="hljs-comment">// repeat animation indefinitely</span>
+    UIViewAnimationOptionAutoreverse               = <span class="hljs-number">1</span> &lt;&lt;  <span class="hljs-number">4</span>, <span class="hljs-comment">// if repeat, run animation back and forth</span>
+    UIViewAnimationOptionOverrideInheritedDuration = <span class="hljs-number">1</span> &lt;&lt;  <span class="hljs-number">5</span>, <span class="hljs-comment">// ignore nested duration</span>
+    UIViewAnimationOptionOverrideInheritedCurve    = <span class="hljs-number">1</span> &lt;&lt;  <span class="hljs-number">6</span>, <span class="hljs-comment">// ignore nested curve</span>
+    UIViewAnimationOptionAllowAnimatedContent      = <span class="hljs-number">1</span> &lt;&lt;  <span class="hljs-number">7</span>, <span class="hljs-comment">// animate contents (applies to transitions only)</span>
+    UIViewAnimationOptionShowHideTransitionViews   = <span class="hljs-number">1</span> &lt;&lt;  <span class="hljs-number">8</span>, <span class="hljs-comment">// flip to/from hidden state instead of adding/removing</span>
+    UIViewAnimationOptionOverrideInheritedOptions  = <span class="hljs-number">1</span> &lt;&lt;  <span class="hljs-number">9</span>, <span class="hljs-comment">// do not inherit any options or animation type</span>
+
+    UIViewAnimationOptionCurveEaseInOut            = <span class="hljs-number">0</span> &lt;&lt; <span class="hljs-number">16</span>, <span class="hljs-comment">// default</span>
+    UIViewAnimationOptionCurveEaseIn               = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">16</span>,
+    UIViewAnimationOptionCurveEaseOut              = <span class="hljs-number">2</span> &lt;&lt; <span class="hljs-number">16</span>,
+    UIViewAnimationOptionCurveLinear               = <span class="hljs-number">3</span> &lt;&lt; <span class="hljs-number">16</span>,
+
+    UIViewAnimationOptionTransitionNone            = <span class="hljs-number">0</span> &lt;&lt; <span class="hljs-number">20</span>, <span class="hljs-comment">// default</span>
+    UIViewAnimationOptionTransitionFlipFromLeft    = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">20</span>,
+    UIViewAnimationOptionTransitionFlipFromRight   = <span class="hljs-number">2</span> &lt;&lt; <span class="hljs-number">20</span>,
+    UIViewAnimationOptionTransitionCurlUp          = <span class="hljs-number">3</span> &lt;&lt; <span class="hljs-number">20</span>,
+    UIViewAnimationOptionTransitionCurlDown        = <span class="hljs-number">4</span> &lt;&lt; <span class="hljs-number">20</span>,
+    UIViewAnimationOptionTransitionCrossDissolve   = <span class="hljs-number">5</span> &lt;&lt; <span class="hljs-number">20</span>,
+    UIViewAnimationOptionTransitionFlipFromTop     = <span class="hljs-number">6</span> &lt;&lt; <span class="hljs-number">20</span>,
+    UIViewAnimationOptionTransitionFlipFromBottom  = <span class="hljs-number">7</span> &lt;&lt; <span class="hljs-number">20</span>,
+} NS_ENUM_AVAILABLE_IOS(<span class="hljs-number">4</span>_0);</code></pre>
+<p>可以看到系统给到的是一个位移枚举，这就意味着这个枚举可以多个&#20540;同时使用，但是怎么用呢？其实那些枚举&#20540;可以分为三个部分。<br>
+我们分别看一下每个枚举的意思：<br>
+<strong>第一部分：动画效果</strong></p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-built_in">UIViewAnimationOptionTransitionNone</span><span class="hljs-comment">//没有效果</span>
+<span class="hljs-built_in">UIViewAnimationOptionTransitionFlipFromLeft</span><span class="hljs-comment">//从左水平翻转</span>
+<span class="hljs-built_in">UIViewAnimationOptionTransitionFlipFromRight</span><span class="hljs-comment">//从右水平翻转</span>
+<span class="hljs-built_in">UIViewAnimationOptionTransitionCurlUp</span><span class="hljs-comment">//翻书上掀</span>
+<span class="hljs-built_in">UIViewAnimationOptionTransitionCurlDown</span><span class="hljs-comment">//翻书下盖UIViewAnimationOptionTransitionCrossDissolve//融合</span>
+<span class="hljs-built_in">UIViewAnimationOptionTransitionFlipFromTop</span><span class="hljs-comment">//从上垂直翻转                    UIViewAnimationOptionTransitionFlipFromBottom//从下垂直翻转</span></code></pre>
+<p><strong>第二部分：动画运动曲线</strong></p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">//开始慢，加速到中间，然后减慢到结束</span>
+<span class="hljs-built_in">UIViewAnimationOptionCurveEaseInOut</span>
+<span class="hljs-comment">//开始慢，加速到结束</span>
+<span class="hljs-built_in">UIViewAnimationOptionCurveEaseIn</span>
+<span class="hljs-comment">//开始快，减速到结束</span>
+<span class="hljs-built_in">UIViewAnimationOptionCurveEaseOut</span>
+<span class="hljs-comment">//线性运动</span>
+<span class="hljs-built_in">UIViewAnimationOptionCurveLinear</span></code></pre>
+<p><strong>第三部分：其他</strong></p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">//默认，跟父类作为一个整体</span>
+<span class="hljs-built_in">UIViewAnimationOptionLayoutSubviews</span>
+<span class="hljs-comment">//设置了这个，主线程可以接收点击事件</span>
+<span class="hljs-built_in">UIViewAnimationOptionAllowUserInteraction</span>
+<span class="hljs-comment">//从当前状态开始动画，父层动画运动期间，开始子层动画.</span>
+<span class="hljs-built_in">UIViewAnimationOptionBeginFromCurrentState</span>
+<span class="hljs-comment">//重复执行动画，从开始到结束， 结束后直接跳到开始态</span>
+<span class="hljs-built_in">UIViewAnimationOptionRepeat</span>
+<span class="hljs-comment">//反向执行动画，结束后会再从结束态-&gt;开始态</span>
+<span class="hljs-built_in">UIViewAnimationOptionAutoreverse</span>
+<span class="hljs-comment">//忽略继承自父层持续时间，使用自己持续时间（如果存在）</span>
+<span class="hljs-built_in">UIViewAnimationOptionOverrideInheritedDuration</span>
+<span class="hljs-comment">//忽略继承自父层的线性效果，使用自己的线性效果（如果存在）</span>
+<span class="hljs-built_in">UIViewAnimationOptionOverrideInheritedCurve</span>
+<span class="hljs-comment">//允许同一个view的多个动画同时进行     </span>
+<span class="hljs-built_in">UIViewAnimationOptionAllowAnimatedContent</span>     
+<span class="hljs-comment">//视图切换时直接隐藏旧视图、显示新视图，而不是将旧视图从父视图移除（仅仅适用于转场动画）             UIViewAnimationOptionShowHideTransitionViews</span>
+<span class="hljs-comment">//不继承父动画设置或动画类型.</span>
+<span class="hljs-built_in">UIViewAnimationOptionOverrideInheritedOptions</span></code></pre>
+<blockquote>
+<p>这下可以看到，这些枚举功能都不一样但是可以随意组合，但是组合的时候需要注意，类型同一枚举的一起不能使用比如<code>UIViewAnimationOptionCurveEaseIn</code>状语从句：<code>UIViewAnimationOptionCurveEaseOut</code></p>
+</blockquote>
+<p>然后我们看一下转场动画的一些效果：</p>
+<p><strong>单视图转场</strong></p>
+<div class="image-package imagebubble"><img src="http://upload-images.jianshu.io/upload_images/3270116-4779e1437d5d2cf5.gif?imageMogr2/auto-orient/strip" class="imagebubble-image" alt=""><br>
+<div class="image-caption">单视图转场.gif注意</div>
+</div>
+<p><strong>双视图转场</strong></p>
+<div class="image-package imagebubble"><img src="http://upload-images.jianshu.io/upload_images/3270116-30a6c1622426380c.gif?imageMogr2/auto-orient/strip" class="imagebubble-image" alt=""><br>
+<div class="image-caption">双视图转场.gif注意</div>
+</div>
+<p><strong>CATransition视图转场</strong></p>
+<div class="image-package imagebubble"><img src="http://upload-images.jianshu.io/upload_images/3270116-eb15d57d4bbe41d9.gif?imageMogr2/auto-orient/strip" alt=""><br>
+<div class="image-caption">CATransition.gif</div>
+</div>
+<p>动画效果太多，GIF录不了太大，效果没有一一展示然后代码再这里：<a target="_blank" target="_blank" href="https://github.com/shmxybfq/TFDemos.git">人口统计学转场动画</a></p>
+<blockquote>
+<p>除了3D变换动画，和绘图相关的动画，基本上我们常用到的动画都在这里了另外感谢这些参考博客的博主〜。<br>
+<a target="_blank" target="_blank" href="http://www.jianshu.com/p/ab0e7b291468">http://www.jianshu.com/p/ab0e7b291468
+</a><br>
+<a target="_blank" target="_blank" href="http://www.cocoachina.com/ios/20150105/10812.html">HTTP：// WWW .cocoachina.com / IOS / 20150105 / 10812.html
+</a><br>
+<a target="_blank" target="_blank" href="http://www.jianshu.com/p/240398d0609d">http://www.jianshu.com/p/240398d0609d
+</a><br>
+<a target="_blank" target="_blank" href="http://www.jianshu.com/p/c18588d4104a">http://www.jianshu.com/p/c18588d4104a
+</a><br>
+<a target="_blank" target="_blank" href="http://www.jianshu.com/p/499a0689ec40">http://www.jianshu.com/p/ 499a0689ec40
+</a><br>
+<a target="_blank" target="_blank" href="http://www.jianshu.com/p/a079a9bb20f9">http://www.jianshu.com/p/a079a9bb20f9
+</a><br>
+<a target="_blank" target="_blank" href="http://www.jianshu.com/p/08fa17620dae">http://www.jianshu.com/p/08fa17620dae
+</a><br>
+<a target="_blank" target="_blank" href="http://www.jianshu.com/p/90a7a1787d1b">http://www.jianshu.com/p/90a7a1787d1b</a></p>
+</blockquote>
+<h6>原创内容，转载请注明出处：</h6>
+<p><a target="_blank" target="_blank" href="http://www.jianshu.com/p/3f48fabaca19">http://www.jianshu.com/p/3f48fabaca19</a></p>
+<br>
+<br>
+<div>文/抱紧我的小鲤鱼（简书作者）<br>
+原文链接：HTTP：//www.jianshu.com/p/3f48fabaca19<br>
+</div>
+   
+</div>
+
+
+
+
+<!-- Baidu Button BEGIN -->
+
+
+
+
+<div class="bdsharebuttonbox tracking-ad" style="float: right;" data-mod="popu_172">
+<a href="#" class="bds_more" data-cmd="more" style="background-position:0 0 !important; background-image: url(http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png) !important"></a>
+<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"  style="background-position:0 -52px !important"></a>
+<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"style="background-position:0 -104px !important"></a>
+<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"style="background-position:0 -260px !important"></a>
+<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"style="background-position:0 -208px !important"></a>
+<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"style="background-position:0 -1612px !important" ></a>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+<!-- Baidu Button END -->
+
+   
+
+    
+<!--172.16.140.11-->
+
+<!-- Baidu Button BEGIN -->
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=1536434" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+
+
+
+ 
+
+
+        <div id="digg" ArticleId="53538266" >
+            <dl id="btnDigg" class="digg digg_disable"  onclick="btndigga();">
+               
+                 <dt>顶</dt>
+                <dd>0</dd>
+            </dl>
+           
+              
+            <dl id="btnBury" class="digg digg_disable"  onclick="btnburya();">
+              
+                  <dt>踩</dt>
+                <dd>0</dd>               
+            </dl>
+            
+        </div>
+     <div class="tracking-ad" data-mod="popu_222"><a href="javascript:void(0);" >&nbsp;</a>   </div>
+    <div class="tracking-ad" data-mod="popu_223"> <a href="javascript:void(0);" >&nbsp;</a></div>
+    <script type="text/javascript">
+                function btndigga() {
+                    $(".tracking-ad[data-mod='popu_222'] a").click();
+                }
+                function btnburya() {
+                    $(".tracking-ad[data-mod='popu_223'] a").click();
+                }
+            </script>
+
+   <ul class="article_next_prev">
+                <li class="prev_article"><span  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian']);location.href='/whjay520/article/details/53508800';">上一篇</span><a href="/whjay520/article/details/53508800" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian'])">Pycharm破解版  Pycharm2016注册码</a></li>
+                <li class="next_article"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian']);location.href='/whjay520/article/details/53666888';">下一篇</span><a href="/whjay520/article/details/53666888" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian'])">史上最全PHP,JAVA+Hadoop,Android，python爬虫，C++，Unity 3D最全学习视频，链接长期有效！</a></li>
+    </ul>
+
+    <div style="clear:both; height:10px;"></div>
+
+
+            <div class="similar_article"   >
+                    <h4></h4>
+                    <div class="similar_c"style="margin:20px 0px 0px 0px">
+                        <div class="similar_c_t">
+                          &nbsp;&nbsp;相关文章推荐
+                        </div>
+                   
+                        <div class="similar_wrap tracking-ad" data-mod="popu_36"  style="max-height:195px;">                       
+                            <ul class="similar_list fl">    
+                                   <li>
+                                       <em>•</em>
+                                       <a href="http://blog.csdn.net/li_shuang_ls/article/details/52074638" title="iOS开发之第三方分享QQ分享，史上最新最全第三方分享QQ方式实现" strategy="SearchAlgorithm" target="_blank" style="width: 290px;">iOS开发之第三方分享QQ分享，史上最新最全第三方分享QQ方式实现</a>
+                                   </li>
+                                   <li>
+                                       <em>•</em>
+                                       <a href="http://blog.csdn.net/zhonggaorong/article/details/51731802" title="iOS开发之第三方分享QQ分享，史上最新最全第三方分享QQ方式实现" strategy="SearchAlgorithm" target="_blank" style="width: 290px;">iOS开发之第三方分享QQ分享，史上最新最全第三方分享QQ方式实现</a>
+                                   </li>
+                                   <li>
+                                       <em>•</em>
+                                       <a href="http://blog.csdn.net/smuglx/article/details/71440126" title="iOS开发应用上架必读最新苹果审核规则(史上最全版)" strategy="SearchAlgorithm" target="_blank" style="width: 290px;">iOS开发应用上架必读最新苹果审核规则(史上最全版)</a>
+                                   </li>
+                                   <li>
+                                       <em>•</em>
+                                       <a href="http://blog.csdn.net/lianbaixue/article/details/9125145" title="iOS开发工具Xcode史上最全快捷键" strategy="SearchAlgorithm" target="_blank" style="width: 290px;">iOS开发工具Xcode史上最全快捷键</a>
+                                   </li>
+                                   <li>
+                                       <em>•</em>
+                                       <a href="http://blog.csdn.net/chenyxh2005/article/details/54347642" title="iOS开发之第三方支付支付宝支付教程，史上最新最全第三方支付宝支付方式实现、支付宝集成教程，支付宝实现流程" strategy="SearchAlgorithm" target="_blank" style="width: 290px;">iOS开发之第三方支付支付宝支付教程，史上最新最全第三方支付宝支付方式实现、支付宝集成教程，支付宝实现流程</a>
+                                   </li>
+                            </ul>
+                              <ul class="similar_list fr">      
+                                   <li>
+                                       <em>•</em>
+                                       <a href="http://blog.csdn.net/zhonggaorong/article/details/51741281" title="iOS开发之第三方分享微信分享、朋友圈分享，史上最新最全第三方分享微信方式实现、朋友圈方式实现" strategy="SearchAlgorithm" target="_blank" style="width: 290px;">iOS开发之第三方分享微信分享、朋友圈分享，史上最新最全第三方分享微信方式实现、朋友圈方式实现</a>
+                                   </li>
+                                   <li>
+                                       <em>•</em>
+                                       <a href="http://blog.csdn.net/zhonggaorong/article/details/51699623" title="iOS开发之第三方登录QQ -- 史上最全最新第三方登录QQ方式实现" strategy="SearchAlgorithm" target="_blank" style="width: 290px;">iOS开发之第三方登录QQ -- 史上最全最新第三方登录QQ方式实现</a>
+                                   </li>
+                                   <li>
+                                       <em>•</em>
+                                       <a href="http://blog.csdn.net/zhonggaorong/article/details/51724810" title="iOS开发之第三方登录微博-- 史上最全最新第三方登录微博方式实现" strategy="SearchAlgorithm" target="_blank" style="width: 290px;">iOS开发之第三方登录微博-- 史上最全最新第三方登录微博方式实现</a>
+                                   </li>
+                                   <li>
+                                       <em>•</em>
+                                       <a href="http://blog.csdn.net/zhonggaorong/article/details/51719050" title="iOS开发之第三方登录微信-- 史上最全最新第三方登录微信方式实现" strategy="SearchAlgorithm" target="_blank" style="width: 290px;">iOS开发之第三方登录微信-- 史上最全最新第三方登录微信方式实现</a>
+                                   </li>
+                                   <li>
+                                       <em>•</em>
+                                       <a href="http://blog.csdn.net/jeffasd/article/details/51661115" title="iOS开发应用上架必读最新苹果审核规则(史上最全版)" strategy="SearchAlgorithm" target="_blank" style="width: 290px;">iOS开发应用上架必读最新苹果审核规则(史上最全版)</a>
+                                   </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>   
+      
+</div>
+
+     <div>
+           
+
+         <script type="text/javascript">
+             /*博客内容页下方Banner1-960*90，创建于2016-12-13*/
+             var cpro_id = "u2843955";
+        </script>
+        <script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/c.js"></script>
+    </div>
+
+<div id="suggest"></div>
+         <script  language="javascript" type='text/javascript'>     
+             $(function(){
+                 $.get("/whjay520/svc/GetSuggestContent/53538266",function(data){
+                     $("#suggest").html(data);
+                 });     
+             });             
+         </script>  
+
+
+<style>
+.blog-ass-articl dd {
+color: #369;
+width: 99%; /*修改行*/
+float: left;
+overflow: hidden;
+font: normal normal 12px/23px "SimSun";
+height: 23px;
+margin: 0;
+padding: 0 0 0 10px;
+margin-right: 30px;
+background: url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;
+}
+</style>
+
+ 
+<div id="relate" data-mod="popu_218"  class="tracking-ad">
+        <div class="relate_t">
+            <h3><span>参考知识库</span></h3>
+        </div>
+        <div class="relate_c">
+        </div>
+</div>
+ 
+
+<dl class="blog-ass-articl tracking-ad" id="res-relatived" data-mod="popu_84"  > 
+    <div class="embody embody_b" id="libkeyparent"  style="display:none">
+            <span class="embody_t">更多资料请参考：</span>
+            <div class="embody_c" id="libkey"></div>
+    </div>
+
+
+     <dt><span>猜你在找</span></dt>    
+
+
+   
+
+    
+    <div id="adCollege"> 
+    </div>  
+
+    
+
+     <script src="http://csdnimg.cn/jobreco/job_reco.js" type="text/javascript"></script> 
+     <script type="text/javascript">
+         csdn.position.showEdu({
+             sourceType: "blog",
+             searchType: "detail",
+             searchKey: "53538266",
+                username: "",
+                recordcount: "10",
+                containerId: "adCollege" //容器DIV的id。 
+            });  
+        </script> 
+   
+</dl>
+
+
+
+
+
+    <div id="ad_cen">        
+                <div>
+                                    <div class="tracking-ad" data-view="true" data-mod="ad_popu_199" data-mtp="43" data-order="114" data-con="ad_content_1843" style="width: 960px; height: 90px;">
+                                             <script type="text/javascript">
+                                                 /*博客内容页下方Banner2-960*90，创建于,2016-11-28*/
+                                                 var cpro_id = "u2831143";
+                                            </script>
+                                            <script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/c.js"></script>
+                                   </div>
+                    </div>
+    </div>  
+
+        <!-- 广告位开始 -->
+        <!-- 广告位结束 -->
+<div class="tracking-ad" data-view="true" data-mod="ad_popu_72" data-mtp="62" data-order="40" data-con="ad_content_2072">
+                 <script id="popuLayer_js_q" src="http://ads.csdn.net/js/popuLayer.js" defer="defer"  type="text/javascript"></script>
+            <div id="layerd" style="position: fixed;bottom:0px;right:0px;line-height:0px;z-index:1000">
+    	            <div class="J_close layer_close" style="display:;background-color:#efefef;padding:0px;color:#333;font:12px/24px Helvetica,Tahoma,Arial,sans-serif;text-align:right;">关闭</div><!-- 广告占位容器 --><div id="cpro_u2895327"></div></div>
+            <script>  document.getElementById("popuLayer_js_q").onload=function(){      var styObjd=styObj={width:"300px","height":parseInt(250)+28};window.CSDN.Layer.PopuLayer("#layerd",{storageName:"layerd",styleObj:styObjd,total:50,expoire:1000*60});  }</script><!-- 投放代码 --><script type="text/javascript">                /*服务器频道首页置顶Banner960*90，创建于2014-7-3*/    (window.cproArray = window.cproArray || []).push({        id: "u2895327"      });  </script>  <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+     
+</div>
+
+<div class="comment_class">
+    <div id="comment_title" class="panel_head">
+        <span class="see_comment">查看评论</span><a name="comments"></a></div>
+    <div id="comment_list">
+    </div>
+    <div id="comment_bar">
+    </div>
+    <div id="comment_form">
+    </div>
+    <div class="announce">
+        * 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<a name="reply"></a><a name="quote"></a></div>
+</div>
+
+<script type="text/javascript">
+    var fileName = '53538266';
+    var commentscount = 0;
+    var islock = false
+</script>
+
+    <div id="ad_bot">
+    </div>
+<div id="report_dialog">
+</div>
+
+<div id="d-top"  style="bottom:60px;">
+
+        <a id="quick-reply" class="btn btn-top q-reply" title="快速回复" style="display:none;">
+            <img src="http://static.blog.csdn.net/images/blog-icon-reply.png" alt="快速回复">
+        </a>    
+    <a id="d-top-a" class="btn btn-top backtop"  style="display: none;" title="返回顶部" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_huidaodingbu'])" style="">         
+         <img src="http://static.blog.csdn.net/images/top.png" alt="TOP">
+    </a>
+</div>
+<script type="text/javascript">
+    $(function ()
+    {
+        $("#ad_frm_0").height("90px");
+        
+        setTimeout(function(){
+            $("#ad_frm_2").height("200px");
+        },1000);    
+    });
+  
+</script>
+<style type="text/css">
+    .tag_list
+    {
+        background: none repeat scroll 0 0 #FFFFFF;
+        border: 1px solid #D7CBC1;
+        color: #000000;
+        font-size: 12px;
+        line-height: 20px;
+        list-style: none outside none;
+        margin: 10px 2% 0 1%;
+        padding: 1px;
+    }
+    .tag_list h5
+    {
+        background: none repeat scroll 0 0 #E0DBD3;
+        color: #47381C;
+        font-size: 12px;
+        height: 24px;
+        line-height: 24px;
+        padding: 0 5px;
+        margin: 0;
+    }
+    .tag_list h5 a
+    {
+        color: #47381C;
+    }
+    .classify
+    {
+        margin: 10px 0;
+        padding: 4px 12px 8px;
+    }
+    .classify a
+    {
+        margin-right: 20px;
+        white-space: nowrap;
+    }
+</style>
+
+
+<div class="tag_list" style="display:none"></div>
+  <script  type='text/javascript'>     
+      $(function(){
+              setTimeout(function(){
+                  $.get("/whjay520/svc/GetTagContent",function(data){
+                      $(".tag_list").html(data).show();
+                  });     
+              });
+          },500);                       
+ </script> 
+
+
+<div id="pop_win" style="display:none ;position: absolute; z-index: 10000; border: 1px solid rgb(220, 220, 220); top: 222.5px; left: 630px; opacity: 1; background: none 0px 0px repeat scroll rgb(255, 255, 255);">
+    
+</div>
+<div id="popup_mask"></div>
+<style>
+    #popup_mask
+    {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        z-index: 9999;
+        left: 0px;
+        top: 0px;
+        opacity: 0.3;
+        filter: alpha(opacity=30);
+        display: none;
+    }
+
+</style>
+
+
+
+
+<script type="text/javascript">
+    $(function(){        
+        
+        setTimeout(function(){
+            $(".comment_body:contains('回复')").each(function(index,item){
+                var u=$(this).text().split('：')[0].toString().replace("回复","")
+                var thisComment=$(this);
+                if(u)
+                {
+                    $.getJSON("https://passport.csdn.net/get/nick?callback=?", {users: u}, function(a) {
+                        if(a!=null&&a.data!=null&&a.data.length>0)
+                        {
+                            nick=a.data[0].n; 
+                            if(u!=nick)
+                            {
+                                thisComment.text(thisComment.text().replace(u,nick));  
+                            }
+                        }       
+                    });  
+                }
+            });         
+
+        },200);  
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },5000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },10000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },15000);
+        
+        setTimeout(function(){
+            $("a img[src='http://js.tongji.linezing.com/stats.gif']").parent().css({"position":"absolute","left":"50%"});
+        },300);
+    });
+
+    function loginbox(){
+        var $logpop=$("#pop_win");
+        $logpop.html('<iframe src="https://passport.csdn.net/account/loginbox?service=http://static.blog.csdn.net/callback.htm" frameborder="0" height="600" width="400" scrolling="no"></iframe>');
+
+        $('#popup_mask').css({
+            opacity: 0.5,
+            width: $( document ).width() + 'px',
+            height:  $( document ).height() + 'px'
+        });
+        $('#popup_mask').css("display","block");
+ 
+        $logpop.css( {
+            top: ($( window ).height() - $logpop.height())/ 2  + $( window 
+       ).scrollTop() + 'px',
+            left:($( window ).width() - $logpop.width())/ 2
+        } );
+ 
+        setTimeout( function () {
+            $logpop.show();
+            $logpop.css( {
+                opacity: 1
+            } );
+        }, 200 );
+ 
+        $('#popup_mask').unbind("click");
+        $('#popup_mask').bind("click", function(){
+            $('#popup_mask').hide();
+            var $clopop = $("#pop_win");
+            $("#common_ask_div_sc").css("display","none");
+            $clopop.css( {
+                opacity: 0
+            } );
+            setTimeout( function () {
+                $clopop.hide();
+            }, 350 );
+            return false;
+        });
+    }   
+
+    var articletitle='史上最全－iOS开发中所用的动画 效果看这里就够了';
+
+</script>
+
+
+
+
+
+
+
+
+                        <div class="clear">
+                        </div>
+                    </div>                   
+                
+            </div>
+                   
+           <div id="side">
+               
+    <div class="side">
+<div id="panel_Profile" class="panel">
+<ul class="panel_head"><span>个人资料</span></ul>
+<ul class="panel_body profile">
+<div id="blog_userface">
+    <a href="http://my.csdn.net/whjay520" target="_blank">
+    <img src="http://avatar.csdn.net/0/8/A/1_whjay520.jpg" title="访问我的空间" style="max-width:90%"/>
+    </a>
+    <br />
+    <span><a href="http://my.csdn.net/whjay520" class="user_name" target="_blank">whjay520</a></span>
+</div>
+<div class="interact">
+
+    <a href="javascript:void(0);" class="attent" id="span_add_follow" title="[加关注]"></a>
+
+ <a href="javascript:void(0);" class="letter"  title="[发私信]" onclick="window.open('http://msg.csdn.net/letters/model?receiver=whjay520','_blank','height=350,width=700');_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_sixin'])"></a>  
+</div>
+<div id="blog_medal">
+                <div id="bms_box">
+                                            <a  target="_blank">
+                                                    <img src="http://c.csdnimg.cn/jifen/images/xunzhang/xunzhang/chizhiyiheng.png" onmouseover="m_over_m(this,4)" onmouseout="m_out_m()" alt="2" >
+                                            </a>
+               </div>
+</div>
+<ul id="blog_rank">
+    <li>访问：<span>46650次</span></li>
+    <li>积分：<span>824</span> </li>    
+    <li >等级： <span style="position:relative;display:inline-block;z-index:1" >
+            <img src="http://c.csdnimg.cn/jifen/images/xunzhang/jianzhang/blog3.png" alt="" style="vertical-align: middle;" id="leveImg">
+            <div id="smallTittle" style=" position: absolute;  left: -24px;  top: 25px;  text-align: center;  width: 101px;  height: 32px;  background-color: #fff;  line-height: 32px;  border: 2px #DDDDDD solid;  box-shadow: 0px 2px 2px rgba (0,0,0,0.1);  display: none;   z-index: 999;">
+            <div style="left: 42%;  top: -8px;  position: absolute;  width: 0;  height: 0;  border-left: 10px solid transparent;  border-right: 10px solid transparent;  border-bottom: 8px solid #EAEAEA;"></div>
+            积分：824 </div>
+        </span>  </li>
+    <li>排名：<span>千里之外</span></li>
+</ul>
+<ul id="blog_statistics">
+    <li>原创：<span>31篇</span></li>
+    <li>转载：<span>19篇</span></li>
+    <li>译文：<span>8篇</span></li>
+    <li>评论：<span>12条</span></li>
+</ul>
+</ul>
+</div>
+
+
+<div class="panel" id="panel_Search">
+    <ul class="panel_head"><span>文章搜索</span></ul>
+    <ul class="panel_body" class="form_search">
+        <form id="frmSearch" action="http://so.csdn.net/search" class="form_search csdn-tracking-statistics" target="_blank"  data-mod="popu_306">
+        <span><input id="inputSearch" type="text" class="blogsearch" title="请输入关键字" /></span>
+        <input id="btnSubmit" type="button" value="搜索" title="search in blog" />
+        <input type="hidden" name="q" id="inputQ" />
+        <input type="hidden" name="t" value="blog" />
+        <a id="btnSearchBlog" target="_blank"></a>
+        </form>
+    </ul>
+</div>
+
+<script type="text/javascript">
+
+   
+    $(function () {
+        $("#btnSubmit").unbind("click");
+        $("#btnSubmit").click(function () {           
+            search();
+        });
+
+        $("#frmSearch").submit(function () {           
+            search();
+            return false;
+        });
+
+        function search()
+        {
+            if ($("#inputSearch").val() == "") {               
+                alert("请录入搜索关键词！");                         
+                return false;
+            }
+            //var url = "http://so.csdn.net/so/search/s.do?q=" + encodeURIComponent($("#inputSearch").val()) + "&u=" + username + "&t=blog";           
+            var url = "https://www.baidu.com/s?wd=" + encodeURIComponent($("#inputSearch").val()) + "%20site%3Ablog.csdn.net"
+            window.location.href = url;
+        }   
+    });
+</script><div id="panel_Category" class="panel">
+<ul class="panel_head"><span>文章分类</span></ul>
+<ul class="panel_body">    
+                 <li>
+                    <a href="/whjay520/article/category/6383991" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">swift</a><span>(30)</span>
+                </li>
+                 <li>
+                    <a href="/whjay520/article/category/6095206" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">iOS相关</a><span>(47)</span>
+                </li>
+                 <li>
+                    <a href="/whjay520/article/category/6095207" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Android相关</a><span>(4)</span>
+                </li>
+                 <li>
+                    <a href="/whjay520/article/category/6095208" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">前端开发</a><span>(12)</span>
+                </li>
+                 <li>
+                    <a href="/whjay520/article/category/6095209" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">后台相关</a><span>(5)</span>
+                </li>
+                 <li>
+                    <a href="/whjay520/article/category/6095210" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">html5等</a><span>(5)</span>
+                </li>
+                 <li>
+                    <a href="/whjay520/article/category/6095216" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">PHP</a><span>(2)</span>
+                </li>
+                 <li>
+                    <a href="/whjay520/article/category/6383996" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">react-native</a><span>(3)</span>
+                </li>
+                 <li>
+                    <a href="/whjay520/article/category/6452106" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Sketch</a><span>(0)</span>
+                </li>
+                 <li>
+                    <a href="/whjay520/article/category/6501655" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Python</a><span>(5)</span>
+                </li>
+</ul>
+</div><div id="panel_Archive" class="panel">
+<ul class="panel_head"><span>文章存档</span></ul>
+<ul class="panel_body">
+<div id="archive_list">
+<!--归档统计-->
+<li><a href="/whjay520/article/month/2017/05">2017年05月</a><span>(1)</span></li><li><a href="/whjay520/article/month/2017/03">2017年03月</a><span>(4)</span></li><li><a href="/whjay520/article/month/2017/01">2017年01月</a><span>(3)</span></li><li><a href="/whjay520/article/month/2016/12">2016年12月</a><span>(7)</span></li><li><a href="/whjay520/article/month/2016/11">2016年11月</a><span>(6)</span></li><li><a href="/whjay520/article/month/2016/10">2016年10月</a><span>(2)</span></li><li><a href="/whjay520/article/month/2016/09">2016年09月</a><span>(19)</span></li><li><a href="/whjay520/article/month/2016/08">2016年08月</a><span>(12)</span></li><li><a href="/whjay520/article/month/2016/07">2016年07月</a><span>(1)</span></li><li><a href="/whjay520/article/month/2016/04">2016年04月</a><span>(1)</span></li><li><a href="/whjay520/article/month/2016/03">2016年03月</a><span>(1)</span></li>
+</div>
+</ul>
+</div>
+<div id="hotarticls" class="panel">
+<ul class="panel_head">
+    <span>       
+阅读排行    </span>
+</ul>
+
+<ul class="panel_body itemlist">
+<li>
+<a href="/whjay520/article/details/53508800" title="Pycharm破解版  Pycharm2016注册码">Pycharm破解版  Pycharm2016注册码</a><span>(15095)</span>
+</li>
+<li>
+<a href="/whjay520/article/details/52602098" title="Xcode8 适配iOS10时遇见的一些坑">Xcode8 适配iOS10时遇见的一些坑</a><span>(9906)</span>
+</li>
+<li>
+<a href="/whjay520/article/details/52634286" title="iOS开发中OpenGL入门一之概念篇">iOS开发中OpenGL入门一之概念篇</a><span>(1801)</span>
+</li>
+<li>
+<a href="/whjay520/article/details/52579029" title="WebStorm 注册码">WebStorm 注册码</a><span>(1563)</span>
+</li>
+<li>
+<a href="/whjay520/article/details/52326686" title="iOS项目开发中，对后台返回数据为&lt;null&gt;时候的处理,避免取值产生程序崩溃问题">iOS项目开发中，对后台返回数据为&lt;null&gt;时候的处理,避免取值产生程序崩溃问题</a><span>(1503)</span>
+</li>
+<li>
+<a href="/whjay520/article/details/53127122" title="iOS开发中应用内跳转到QQ聊天界面和指定的联系人聊天">iOS开发中应用内跳转到QQ聊天界面和指定的联系人聊天</a><span>(1211)</span>
+</li>
+<li>
+<a href="/whjay520/article/details/53538266" title="史上最全－iOS开发中所用的动画 效果看这里就够了">史上最全－iOS开发中所用的动画 效果看这里就够了</a><span>(1098)</span>
+</li>
+<li>
+<a href="/whjay520/article/details/53440369" title="iOS开发中向服务器上传视频的实践">iOS开发中向服务器上传视频的实践</a><span>(961)</span>
+</li>
+<li>
+<a href="/whjay520/article/details/52776488" title="iOS开发中保存用户信息的技术之KeyChain的基本使用">iOS开发中保存用户信息的技术之KeyChain的基本使用</a><span>(948)</span>
+</li>
+<li>
+<a href="/whjay520/article/details/53486717" title="iOS开发中JS调用原生方法并传值">iOS开发中JS调用原生方法并传值</a><span>(914)</span>
+</li>
+</ul>
+</div>
+<div id="hotarticls2" class="panel">
+<ul class="panel_head"><span>评论排行</span></ul>
+<ul class="panel_body itemlist">
+<li>
+<a href="/whjay520/article/details/53127122" title="iOS开发中应用内跳转到QQ聊天界面和指定的联系人聊天">iOS开发中应用内跳转到QQ聊天界面和指定的联系人聊天</a><span>(7)</span>
+</li>
+<li>
+<a href="/whjay520/article/details/71158757" title="iOS开发上传App Store时候一直卡在 Authenticating with the iTunes Store 的解决办法">iOS开发上传App Store时候一直卡在 Authenticating with the iTunes Store 的解决办法</a><span>(2)</span>
+</li>
+<li>
+<a href="/whjay520/article/details/52326686" title="iOS项目开发中，对后台返回数据为&lt;null&gt;时候的处理,避免取值产生程序崩溃问题">iOS项目开发中，对后台返回数据为&lt;null&gt;时候的处理,避免取值产生程序崩溃问题</a><span>(1)</span>
+</li>
+<li>
+<a href="/whjay520/article/details/52602098" title="Xcode8 适配iOS10时遇见的一些坑">Xcode8 适配iOS10时遇见的一些坑</a><span>(1)</span>
+</li>
+<li>
+<a href="/whjay520/article/details/52776488" title="iOS开发中保存用户信息的技术之KeyChain的基本使用">iOS开发中保存用户信息的技术之KeyChain的基本使用</a><span>(1)</span>
+</li>
+<li>
+<a href="/whjay520/article/details/52314529" title="iOS图像处理之Core Image 之二  实例运用">iOS图像处理之Core Image 之二  实例运用</a><span>(0)</span>
+</li>
+<li>
+<a href="/whjay520/article/details/52251422" title="Quartz2D 在开发中的应用">Quartz2D 在开发中的应用</a><span>(0)</span>
+</li>
+<li>
+<a href="/whjay520/article/details/52250988" title="iOS中常见的----------------NSAttributedString">iOS中常见的----------------NSAttributedString</a><span>(0)</span>
+</li>
+<li>
+<a href="/whjay520/article/details/52220863" title="iOS开发中在许多项目中涉及的身份证验证等问题">iOS开发中在许多项目中涉及的身份证验证等问题</a><span>(0)</span>
+</li>
+<li>
+<a href="/whjay520/article/details/52034799" title="iOS图像处理之Core Image   ------  吴白">iOS图像处理之Core Image   ------  吴白</a><span>(0)</span>
+</li>
+</ul>
+</div>
+<div id="homepageArticles" class="panel tracking-ad" data-mod="popu_4">
+<ul class="panel_head"><span>推荐文章</span></ul>
+<ul class="panel_body" id="ad_commend">
+<ul>
+<li><a href="http://blog.csdn.net/turingbooks/article/details/72416875" target="_blank">* 5月书讯：流畅的Python，终于等到你！</a></li>
+<li><a href="http://blog.csdn.net/blogdevteam/article/details/72765950" 
+target="_blank">* CSDN日报20170526 ——《论程序员的时代焦虑与焦虑的缓解》 </a></li>
+<li><a href="http://blog.csdn.net/jiangwei0910410003/article/details/70483088"target="_blank">* Android中带你开发一款自动爆破签名校验工具kstools</a></li>
+<li><a href="http://blog.csdn.net/guolin_blog/article/details/54895665" 
+target="_blank">* Android图片加载框架最全解析——深入探究Glide的缓存机制</a></li>
+<li><a href="http://blog.csdn.net/lmj623565791/article/details/72667669" 
+target="_blank">* Android 热修复 Tinker Gradle Plugin解析</a></li>
+<li><a href="http://blog.csdn.net/puppet_master/article/details/72455945" 
+target="_blank">* Unity Shader-死亡溶解效果</a></li>
+
+</ul></ul>
+</div>
+
+
+<div id="newcomments" class="panel">
+<ul class="panel_head"><span>最新评论</span></ul>
+<ul class="panel_body itemlist">
+    <li>
+   
+         <a href="/whjay520/article/details/71158757#comments">iOS开发上传App Store时候一直卡在 Authenticating with the iTunes Store 的解决办法</a>
+    <p style="margin:0px;"><a href="/weixin_37542200" class="user_name">weixin_37542200</a>:
+多谢呀兄弟，我也卡在这了，终于上传上去了
+    </p>
+    </li>
+    <li>
+   
+         <a href="/whjay520/article/details/71158757#comments">iOS开发上传App Store时候一直卡在 Authenticating with the iTunes Store 的解决办法</a>
+    <p style="margin:0px;"><a href="/weixin_37542200" class="user_name">weixin_37542200</a>:
+多谢呀兄弟，我也卡在这了，终于上传上去了
+    </p>
+    </li>
+    <li>
+   
+         <a href="/whjay520/article/details/52326686#comments">iOS项目开发中，对后台返回数据为&lt;null&gt;时候的处理,避免取值产生程序崩溃问题</a>
+    <p style="margin:0px;"><a href="/qq_35332926" class="user_name">qq_35332926</a>:
+你这个方法 能不能判断出 字典里包含数组   数组里又包含字典   字典里的字符串  为空的情况
+    </p>
+    </li>
+    <li>
+   
+         <a href="/whjay520/article/details/53127122#comments">iOS开发中应用内跳转到QQ聊天界面和指定的联系人聊天</a>
+    <p style="margin:0px;"><a href="/whjay520" class="user_name">whjay520</a>:
+@baidu_32045567:伙计，我可还没到神那一步，我就说下第三种在我项目中的实现      ...
+    </p>
+    </li>
+    <li>
+   
+         <a href="/whjay520/article/details/53127122#comments">iOS开发中应用内跳转到QQ聊天界面和指定的联系人聊天</a>
+    <p style="margin:0px;"><a href="/baidu_32045567" class="user_name">baidu_32045567</a>:
+大神，你说的第三种方法怎么实现？
+    </p>
+    </li>
+    <li>
+   
+         <a href="/whjay520/article/details/53127122#comments">iOS开发中应用内跳转到QQ聊天界面和指定的联系人聊天</a>
+    <p style="margin:0px;"><a href="/baidu_32045567" class="user_name">baidu_32045567</a>:
+大神，你说的第三种方法怎么实现？
+    </p>
+    </li>
+    <li>
+   
+         <a href="/whjay520/article/details/53127122#comments">iOS开发中应用内跳转到QQ聊天界面和指定的联系人聊天</a>
+    <p style="margin:0px;"><a href="/whjay520" class="user_name">whjay520</a>:
+@wanglei0918:我的是10.2的都能跳的
+    </p>
+    </li>
+    <li>
+   
+         <a href="/whjay520/article/details/53127122#comments">iOS开发中应用内跳转到QQ聊天界面和指定的联系人聊天</a>
+    <p style="margin:0px;"><a href="/wanglei0918" class="user_name">wanglei0918</a>:
+你好，我的也是这样写的，web跳转QQ好像不支持iOS10啊？
+    </p>
+    </li>
+    <li>
+   
+         <a href="/whjay520/article/details/53127122#comments">iOS开发中应用内跳转到QQ聊天界面和指定的联系人聊天</a>
+    <p style="margin:0px;"><a href="/whjay520" class="user_name">whjay520</a>:
+@qq_16030405:这个我估摸着是跳转接口的原因，具体的我不清楚，在项目中我们采用的是Safa...
+    </p>
+    </li>
+    <li>
+   
+         <a href="/whjay520/article/details/53127122#comments">iOS开发中应用内跳转到QQ聊天界面和指定的联系人聊天</a>
+    <p style="margin:0px;"><a href="/qq_16030405" class="user_name">qq_16030405</a>:
+你还，第一种方法调用QQ非好友的话，不能发送消息是为什么？QQ权限限制吗？还是调用方法的问题
+    </p>
+    </li>
+</ul>
+</div>
+    </div>
+    <div class="clear">
+    </div>
+
+
+                 <!-- 广告位开始 --> 
+                <!-- 广告位结束 -->
+                   <div class="tracking-ad" data-view="true" data-mod="ad_popu_189" data-mtp="63" data-order="40" data-con="ad_content_1259" style="width: 250px; height: 250px;">
+                        <div id="nav_show_top_stop" style="width: 250px;height: 250px;z-index:1000"><div id="cpro_u2734133"></div></div>
+                   </div>
+                    <script>    
+                        
+                        setTimeout(function () {
+                            var naviga_offsetTop = 0; function naviga_stay_top() {
+                                var scrollTop = jQuery(document).scrollTop();
+                                if (scrollTop > naviga_offsetTop) {
+                                    jQuery("#nav_show_top_stop").css({ "position": "fixed" });
+                                    jQuery("#nav_show_top_stop").css({ "top": "0px" });
+                                } else { jQuery("#nav_show_top_stop").css({ "position": "fixed" }); jQuery("#nav_show_top_stop").css({ "top": naviga_offsetTop - scrollTop + "px" }); }
+                            }
+                            function onload_function() {
+                                naviga_offsetTop = jQuery("#nav_show_top_stop").position().top;
+                                jQuery(window).bind("scroll", naviga_stay_top); jQuery(window).bind("mousewheel", naviga_stay_top);
+                                jQuery(document).bind("scroll", naviga_stay_top); jQuery(document).bind("mousewheel", naviga_stay_top);
+                            } jQuery(document).ready(onload_function);
+                        },200);                                   
+
+                    </script>
+                    <script type="text/javascript">    (window.cproArray = window.cproArray || []).push({ id: "u2734133" });  </script>
+                   <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+
+           </div>   
+
+            <div class="clear">
+            </div>
+        </div>
+
+        
+
+
+
+
+
+
+
+
+    <script type="text/javascript" src="http://passport.csdn.net/content/loginbox/login.js"></script>
+<script type="text/javascript">
+    $(function () {
+        function __get_code_toolbar(snippet_id) {
+            return $("<span class='tracking-ad' data-mod='popu_167'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "' target='_blank' title='在CODE上查看代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a></span>"
+                    + "<span class='tracking-ad' data-mod='popu_170'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "/fork' target='_blank' title='派生到我的代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a></span>");
+        }
+        
+        $("[code_snippet_id]").each(function () {
+            __s_id = $(this).attr("code_snippet_id");
+            if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                __code_tool = __get_code_toolbar(__s_id);
+                $(this).prev().find(".tools").append(__code_tool);
+            }
+        });
+
+        $(".bar").show();
+    });
+</script>
+
+
+
+
+
+    </div>
+      <!--new top-->
+    
+
+     
+
+   
+        <!--new top-->
+   
+   
+
+    
+    
+    
+   
+
+   
+
+
+       <script type="text/javascript" src="http://static.blog.csdn.net/public/res/bower-libs/MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+          <script type="text/javascript">
+              //$(function () {
+              //    setTimeout(function () {
+              //        var searchtitletags = articletitle + ',' + $("#tags").html();
+              //        searchService({
+              //            index: 'blog',
+              //            query: searchtitletags,
+              //            from: 5,
+              //            size: 5,
+              //            appendTo: '#res',
+              //            url: 'recommend',
+              //            his: 2,
+              //            client: "blog_cf_enhance",
+              //            tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+              //        });
+              //    }, 1000);
+              //});
+
+         </script>
+
+    <script src="http://static.blog.csdn.net/scripts/csdn_blog_detail.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="http://c.csdnimg.cn/blog/csdn_public_blog_detail.min.js"></script>
+
+    <script type="text/javascript" src="http://medal.blog.csdn.net/showblogmedal.ashx?blogid=5584169"></script>
+
+     
+    
+
+
+  <div id="a52b5334d" style="width: 1px; height: 1px; display: none;">
+                    <script id="adJs52b5334"></script>
+                    <script>document.getElementById("adJs52b5334").src = "http://ads.csdn.net/js/opt/52b5334.js?t=" + Math.random();</script>
+   </div>
+
+    
+    
+        
+     
+
+    
+          
+    <div class="pop_CA_cover"  style="display:none"></div>
+    <div class="pop pop_CA"  style="display:none">
+          <div class="CA_header">
+            收藏助手
+            <span class="cancel_icon"  id="fapancle"  onclick="$('.pop_CA').hide();$('.pop_CA_cover').hide();"></span>
+          </div>
+          <iframe src="" id="fa" frameborder="0" width="100%" height="360"  scrolling="no" ></iframe>
+    </div>
+
+
+        <script type="text/javascript">
+
+            $(function () {
+                var fromjs = $("#fromjs");
+                if (fromjs.length > 0) {
+                    $("#fromjs .markdown_views pre").addClass("prettyprint");
+                    prettyPrint();
+
+                    $('pre.prettyprint code').each(function () {
+                        var lines = $(this).text().split('\n').length;
+                        var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+                        $(this).addClass('has-numbering').parent().append($numbering);
+                        for (i = 1; i <= lines; i++) {
+                            $numbering.append($('<li/>').text(i));
+                        };
+                        $numbering.fadeIn(1700);
+                    });
+
+                    $('.pre-numbering li').css("color", "#999");
+                }
+            });
+           
+            $(".markdown_views a[target!='_blank']").attr("target", "_blank");
+
+            $(".toc a[target='_blank']").attr("target", "");
+
+        </script>
+
+</body>
+</html>   
+ 
